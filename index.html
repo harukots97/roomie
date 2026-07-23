@@ -7,13 +7,13 @@
 <meta name="description" content="Set your vibe and only match with flatmates who actually fit. Verified profiles, no ghosting, no guessing." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header class="site-header" id="top">
-  <div class="container header-inner">
+  <div class="header-inner">
     <a href="#top" class="logo">
       <span class="logo-mark" aria-hidden="true"></span>
       <span class="logo-word">Roomie</span>
@@ -27,7 +27,7 @@
     </nav>
 
     <div class="header-actions">
-      <a href="#get-started" class="btn btn-dark">Get started</a>
+      <a href="#get-started" class="btn btn-primary">Get started</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -39,38 +39,20 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-copy">
-        <span class="badge badge-outline">Now testing demand · Phase 1</span>
-        <h1 class="hero-heading">Swipe right on your next flatmate.</h1>
-        <p class="hero-sub">Set your vibe. Night owl, early bird, dog lover, zero afterparties — and only match with people who actually fit. No endless chats, no surprises.</p>
-        <div class="hero-actions">
-          <a href="#get-started" class="btn btn-dark btn-lg">Find your match</a>
-          <a href="#how-it-works" class="btn btn-pill">See how it works</a>
-        </div>
-      </div>
+    <div class="hero-portraits" aria-hidden="true">
+      <div class="portrait-frame portrait-1"><span class="portrait-inner">JM</span></div>
+      <div class="portrait-frame portrait-2"><span class="portrait-inner">AL</span></div>
+      <div class="portrait-frame portrait-3"><span class="portrait-inner">SK</span></div>
+      <div class="portrait-frame portrait-4"><span class="portrait-inner">RB</span></div>
+    </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-visual-blob"></div>
-        <div class="phone-mock">
-          <div class="phone-mock-notch"></div>
-          <div class="phone-mock-header">
-            <span class="phone-mock-avatar"></span>
-            <span class="phone-mock-title">Roomie</span>
-          </div>
-          <div class="phone-mock-body">
-            <div class="chat-bubble chat-bubble-in">Night owl, dog friendly, love cooking for the flat 🍝</div>
-            <div class="chat-bubble chat-bubble-out">Same energy. When can you move in?</div>
-            <div class="match-card">
-              <div class="match-avatars">
-                <span class="avatar avatar-1"></span>
-                <span class="avatar avatar-2"></span>
-              </div>
-              <p class="match-title">It's a match</p>
-              <p class="match-sub">92% lifestyle fit</p>
-            </div>
-          </div>
-        </div>
+    <div class="container hero-inner">
+      <span class="badge">Now testing demand · Phase 1</span>
+      <h1 class="hero-heading">Swipe right on your next flatmate.</h1>
+      <p class="hero-sub">Set your vibe. Night owl, early bird, dog lover, zero afterparties — and only match with people who actually fit. No endless chats, no surprises.</p>
+      <div class="hero-actions">
+        <a href="#get-started" class="btn btn-primary btn-lg">Find your match</a>
+        <a href="#how-it-works" class="btn btn-outline btn-lg">See how it works</a>
       </div>
     </div>
   </section>
@@ -78,18 +60,28 @@
   <!-- THE PROBLEM -->
   <section class="section" id="problem">
     <div class="container">
-      <div class="section-head">
-        <span class="badge badge-outline">The problem we're solving</span>
+      <div class="section-header">
+        <span class="badge badge-info">The problem we're solving</span>
         <h2 class="section-heading">Finding a flatmate is broken.</h2>
         <p class="section-sub">Scattered posts. Ghosted messages. No way to verify who's real. Roomie brings everyone looking for a room or a flatmate into one place — with verified profiles, so you can actually trust who you're talking to.</p>
       </div>
 
-      <div class="dark-card">
-        <ul class="arrow-list">
-          <li><span class="arrow">→</span> Posts scattered across group chats, Facebook and sketchy listing sites</li>
-          <li><span class="arrow">→</span> Messages that go nowhere — ghosted with zero accountability</li>
-          <li><span class="arrow">→</span> No real way to verify who you'd actually be living with</li>
-        </ul>
+      <div class="tinted-grid">
+        <div class="tinted-card tinted-card--blossom">
+          <span class="tinted-card-arrow" aria-hidden="true">↗</span>
+          <h3 class="tinted-card-title">Scattered everywhere</h3>
+          <p class="tinted-card-desc">Posts spread across group chats, Facebook and sketchy listing sites — with nowhere central to look.</p>
+        </div>
+        <div class="tinted-card tinted-card--forest">
+          <span class="tinted-card-arrow" aria-hidden="true">↗</span>
+          <h3 class="tinted-card-title">Ghosted messages</h3>
+          <p class="tinted-card-desc">Conversations that go nowhere, with zero accountability on either side.</p>
+        </div>
+        <div class="tinted-card tinted-card--ember">
+          <span class="tinted-card-arrow" aria-hidden="true">↗</span>
+          <h3 class="tinted-card-title">No way to verify</h3>
+          <p class="tinted-card-desc">No real way to know who you'd actually be living with, until it's too late.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -97,8 +89,8 @@
   <!-- HOW IT WORKS -->
   <section class="section" id="how-it-works">
     <div class="container">
-      <div class="section-head">
-        <span class="badge badge-outline">How it works</span>
+      <div class="section-header">
+        <span class="badge badge-info">How it works</span>
         <h2 class="section-heading">Four steps to your perfect match.</h2>
       </div>
 
@@ -130,8 +122,8 @@
   <!-- QUIRKS -->
   <section class="section" id="quirks">
     <div class="container">
-      <div class="section-head">
-        <h2 class="section-heading">Every habit.<br>Every quirk.</h2>
+      <div class="section-header">
+        <h2 class="section-heading">Every habit. Every quirk.</h2>
         <p class="section-sub">You set your preferences — we only show you to people who actually match them. Mutual filters only.</p>
       </div>
 
@@ -155,7 +147,7 @@
   <!-- GET STARTED -->
   <section class="section" id="get-started">
     <div class="container">
-      <div class="section-head">
+      <div class="section-header">
         <h2 class="section-heading">Tell us who you are.</h2>
         <p class="section-sub">The web platform isn't built yet. Fill in a short form and we'll match you by hand — using AI to find the best lifestyle fits from your answers. Human judgement, AI speed.</p>
       </div>
@@ -164,21 +156,21 @@
         <div class="cta-card">
           <h3 class="cta-card-title">I have a flat that needs the right people.</h3>
           <p class="cta-card-desc">You're the main renter and you know what kind of person you need living with you.</p>
-          <a href="#" class="btn btn-dark" data-typeform="landlord" target="_blank" rel="noopener">Tell us about your flat</a>
+          <a href="#" class="btn btn-primary" data-typeform="landlord" target="_blank" rel="noopener">Tell us about your flat</a>
         </div>
         <div class="cta-card">
           <h3 class="cta-card-title">I'm ready to find my new home.</h3>
           <p class="cta-card-desc">You know what kind of place you want — and who you want to share it with.</p>
-          <a href="#" class="btn btn-dark" data-typeform="seeker" target="_blank" rel="noopener">Tell us about yourself</a>
+          <a href="#" class="btn btn-primary" data-typeform="seeker" target="_blank" rel="noopener">Tell us about yourself</a>
         </div>
       </div>
 
       <div class="support-block">
         <p class="support-text">Just believe in the idea? Chip in and help us build it.</p>
         <div class="support-actions">
-          <a href="#" class="btn btn-pill" data-stripe="3" target="_blank" rel="noopener">€3</a>
-          <a href="#" class="btn btn-pill" data-stripe="5" target="_blank" rel="noopener">€5</a>
-          <a href="#" class="btn btn-pill" data-stripe="10" target="_blank" rel="noopener">€10</a>
+          <a href="#" class="btn btn-outline" data-stripe="3" target="_blank" rel="noopener">€3</a>
+          <a href="#" class="btn btn-outline" data-stripe="5" target="_blank" rel="noopener">€5</a>
+          <a href="#" class="btn btn-outline" data-stripe="10" target="_blank" rel="noopener">€10</a>
         </div>
       </div>
     </div>
@@ -187,14 +179,14 @@
   <!-- ROADMAP -->
   <section class="section" id="roadmap">
     <div class="container">
-      <div class="section-head">
-        <span class="badge badge-outline">Where we are headed</span>
+      <div class="section-header">
+        <span class="badge badge-info">Where we are headed</span>
         <h2 class="section-heading">The roadmap.</h2>
       </div>
 
       <div class="roadmap-grid">
         <div class="roadmap-card">
-          <span class="badge badge-accent">Phase 1 · Active</span>
+          <span class="badge badge-primary">Phase 1 · Active</span>
           <h3 class="roadmap-title">Testing the demand</h3>
           <p class="roadmap-desc">We validate that people actually want this before building. Every match is done by hand, enhanced with AI to surface the best lifestyle fits from form data.</p>
           <ul class="check-list">
@@ -206,7 +198,7 @@
         </div>
 
         <div class="roadmap-card">
-          <span class="badge badge-outline">Phase 2 · Up next</span>
+          <span class="badge badge-info">Phase 2 · Up next</span>
           <h3 class="roadmap-title">Building the web platform</h3>
           <p class="roadmap-desc">Once demand is proven, we build a full-featured web platform. Self-service flows, real-time matching, and a polished experience for both flat owners and seekers.</p>
           <ul class="check-list">
@@ -218,7 +210,7 @@
         </div>
 
         <div class="roadmap-card">
-          <span class="badge badge-outline">Phase 3 · Future</span>
+          <span class="badge badge-info">Phase 3 · Future</span>
           <h3 class="roadmap-title">The full platform</h3>
           <p class="roadmap-desc">Roomie becomes the complete flatmate life layer — from finding someone to living with them safely and smoothly.</p>
           <ul class="check-list">
@@ -235,7 +227,7 @@
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
+  <div class="footer-inner">
     <a href="#top" class="logo">
       <span class="logo-mark" aria-hidden="true"></span>
       <span class="logo-word">Roomie</span>

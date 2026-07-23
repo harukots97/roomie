@@ -52,7 +52,7 @@ if (navToggle && navLinks) {
 document.documentElement.classList.add("js-ready");
 
 const revealTargets = document.querySelectorAll(
-  ".section-head, .dark-card, .step-card, .cta-card, .roadmap-card, .support-block"
+  ".section-header, .tinted-card, .step-card, .cta-card, .roadmap-card, .support-block"
 );
 revealTargets.forEach((el) => el.classList.add("reveal"));
 

@@ -1,251 +1,263 @@
-# Awesomic — Style Reference
-> editorial zinc grid with confetti-orange punctuation.
+# August Health EHR — Style Reference
+> Warm cream pharmacy with violet ink — a humanist clinical surface that softens healthcare's typical sterility.
 
 **Theme:** light
 
-Awesomic operates in a restrained, neutral-first visual register: a zinc-gray scale carries nearly the entire interface, with one vivid orange badge accent and almost no other chromatic intrusion. The geometry is defined by generous corner rounding — 36px cards, 14px buttons, 10000px pills — and hairline 1px borders replace drop shadows as the primary elevation tool. Typography is a single custom geometric sans (Cosmica) deployed at bold display weights (56–64px / weight 600) for editorial headlines, paired with compact 14px body text that signals efficiency. The atmosphere is that of a confident, infrastructure-grade marketplace: quiet surfaces, precise density, and color deployed as functional punctuation rather than decoration.
+August Health uses a warm-clinical visual language: a soft cream canvas (#f8f3eb) replaces the cold white typical of healthcare SaaS, and shadows are tinted with warm brown rgba(75,68,57,0.1) rather than cool gray. The pairing of an editorial serif (Reckless Neue) with a geometric sans (Saans) gives the product an approachable, humanist feel appropriate for senior care, while a vivid indigo (#4865ff) anchors all primary actions. Color appears in concentrated bursts — circular portrait frames, tinted feature cards, and pill buttons — against an otherwise restrained neutral palette, creating rhythm and warmth without overwhelming the interface.
 
 ## Tokens — Colors
 
 | Name | Value | Token | Role |
 |------|-------|-------|------|
-| Obsidian | `#09090b` | `--color-obsidian` | Primary action buttons, hero headlines, dominant text — the deepest near-black that grounds every dark CTA and display heading against the light canvas |
-| Graphite | `#18181b` | `--color-graphite` | Body text, nav text, badge text — the working ink color across paragraphs, links, and labels |
-| Slate | `#27272a` | `--color-slate` | Secondary headings and elevated card surfaces — a mid-dark gray for cards that need visual weight |
-| Iron | `#3f3f46` | `--color-iron` | Muted text, button labels on light surfaces, badge text — the mid-gray used for secondary UI labels and outlined-button text |
-| Steel | `#52525b` | `--color-steel` | Icon strokes, supporting metadata — borders and icon outlines in darker contexts |
-| Fog | `#71717a` | `--color-fog` | Helper text, tertiary labels — muted copy and supporting metadata |
-| Ash | `#a1a1aa` | `--color-ash` | Placeholder text, disabled labels, light icon strokes — the lightest readable gray |
-| Mist | `#d4d4d8` | `--color-mist` | Subtle borders, secondary card fills, link pill backgrounds — structural divider color |
-| Cloud | `#ececee` | `--color-cloud` | Primary border color across the system — 1px hairline rules on cards, badges, and inputs |
-| Paper | `#f4f4f5` | `--color-paper` | Canvas background, card surfaces, badge fills — the warm-cool gray that carries the page surface |
-| Snow | `#ffffff` | `--color-snow` | Elevated surfaces (cards on canvas), input fields, button backgrounds for ghost/neutral actions |
-| Ember | `#ff5a00` | `--color-ember` | Accent badges (YC batch tags, highlight chips) — the single vivid color in the system, used sparingly for startup credentials and category emphasis |
-| Magenta Spark | `#fe45e2` | `--color-magenta-spark` | Rare decorative card accent — used on one hero card as visual punctuation against the monochrome grid |
+| Primary Indigo | `#4865ff` | `--color-primary-indigo` | Primary action buttons, active nav state, icon accents — the single saturated focal color that makes CTAs unmistakably interactive |
+| Deep Ink | `#080331` | `--color-deep-ink` | Headlines, body text, primary borders — near-black violet that pairs warmth with the serif typeface |
+| Midnight Violet | `#1b1463` | `--color-midnight-violet` | Navigation borders, secondary surfaces, gradient terminus — darker sibling to Primary Indigo for layered depth |
+| Forest | `#328a3b` | `--color-forest` | Green action color for filled buttons, selected navigation states, and focused conversion moments |
+| Ember | `#ff6d39` | `--color-ember` | Tinted card surfaces, portrait frame backgrounds — warm orange that signals energy and human warmth |
+| Blossom | `#f098d7` | `--color-blossom` | Tinted feature card backgrounds, hero photo frame — mid-pink for category-coded surfaces |
+| Petal | `#ffaefe` | `--color-petal` | Light pink surface washes and button backgrounds — lightest tint in the pink family for soft fills |
+| Meadow | `#114e0b` | `--color-meadow` | Dark green button background variant — deep saturated green for contrasting pill buttons |
+| Lavender Mist | `#a2baff` | `--color-lavender-mist` | Outlined/ghost button borders, subtle violet washes — soft tint version of Primary Indigo |
+| Cream | `#f8f3eb` | `--color-cream` | Page canvas, section backgrounds, link surfaces — the warm off-white base layer that defines the entire mood |
+| Stone | `#333333` | `--color-stone` | Link and icon text — slightly lighter than pure black for secondary text |
+| Pure White | `#ffffff` | `--color-pure-white` | Card surfaces, button text, inverted elements — the clean surface that sits on top of cream |
+| True Black | `#000000` | `--color-true-black` | Primary text, maximum-contrast borders, heading strokes |
+| Info Blue | `#dce4fb` | `--color-info-blue` | Badge backgrounds for informational tags — near-gray blue for low-emphasis status indicators |
 
 ## Tokens — Typography
 
-### Cosmica — Single-family type system for everything: 56–64px weight 600 display headlines with tight 1.12–1.28 line-height, 32–40px weight 600–700 section headings, 14–16px weight 400 body and UI text, 12–13px weight 400 badge and meta labels · `--font-cosmica`
-- **Substitute:** DM Sans
-- **Weights:** 300, 400, 500, 600, 700
-- **Sizes:** 10, 12, 13, 14, 15, 16, 18, 20, 32, 40, 56, 64
-- **Line height:** 1.0–1.8
-- **Letter spacing:** normal across all steps (no tracking adjustments detected)
-- **Role:** Single-family type system for everything: 56–64px weight 600 display headlines with tight 1.12–1.28 line-height, 32–40px weight 600–700 section headings, 14–16px weight 400 body and UI text, 12–13px weight 400 badge and meta labels
+### Reckless Neue — All headings and display text. A contemporary editorial serif used exclusively at weight 400 (regular) — no bold. This is anti-convention: most healthtech brands use sans-serif or bold serifs; the regular-weight serif at large sizes creates a literary, trustworthy quality without shouting. Largest sizes (48-64px) anchor section headlines, while 24-32px serves subheadings. · `--font-reckless-neue`
+- **Substitute:** DM Serif Display or Source Serif 4
+- **Weights:** 400
+- **Sizes:** 24px, 32px, 48px, 64px
+- **Line height:** 1.0-1.3
+- **Role:** All headings and display text. A contemporary editorial serif used exclusively at weight 400 (regular) — no bold. This is anti-convention: most healthtech brands use sans-serif or bold serifs; the regular-weight serif at large sizes creates a literary, trustworthy quality without shouting. Largest sizes (48-64px) anchor section headlines, while 24-32px serves subheadings.
+
+### Saans — Body text, UI controls, navigation, buttons, cards, labels, and everything non-headline. Weight 400 for body and descriptions, weight 500 for buttons and nav links where slight emphasis is needed. The geometric humanist sans provides clarity and warmth at small sizes, contrasting the editorial serif headings. · `--font-saans`
+- **Substitute:** Inter or DM Sans
+- **Weights:** 400, 500
+- **Sizes:** 12px, 14px, 16px, 20px, 24px
+- **Line height:** 1.0-1.6
+- **Role:** Body text, UI controls, navigation, buttons, cards, labels, and everything non-headline. Weight 400 for body and descriptions, weight 500 for buttons and nav links where slight emphasis is needed. The geometric humanist sans provides clarity and warmth at small sizes, contrasting the editorial serif headings.
 
 ### Type Scale
 
 | Role | Size | Line Height | Letter Spacing | Token |
 |------|------|-------------|----------------|-------|
-| caption | 12px | 1.64 | — | `--text-caption` |
-| body | 15px | 1.45 | — | `--text-body` |
-| body-lg | 18px | 1.45 | — | `--text-body-lg` |
-| subheading | 20px | 1.5 | — | `--text-subheading` |
-| heading-sm | 32px | 1.5 | — | `--text-heading-sm` |
-| heading | 40px | 1.28 | — | `--text-heading` |
-| heading-lg | 56px | 1.28 | — | `--text-heading-lg` |
-| display | 64px | 1.12 | — | `--text-display` |
+| caption | 12px | 1.6 | — | `--text-caption` |
+| body-sm | 14px | 1.4 | — | `--text-body-sm` |
+| body | 16px | 1.6 | — | `--text-body` |
+| subheading | 20px | 1.3 | — | `--text-subheading` |
+| heading-sm | 24px | 1.3 | — | `--text-heading-sm` |
+| heading | 32px | 1.1 | — | `--text-heading` |
+| heading-lg | 48px | 1.1 | — | `--text-heading-lg` |
+| display | 64px | 1 | — | `--text-display` |
 
 ## Tokens — Spacing & Shapes
 
-**Base unit:** 4px
+**Base unit:** 8px
 
-**Density:** compact
+**Density:** comfortable
 
 ### Spacing Scale
 
 | Name | Value | Token |
 |------|-------|-------|
-| 4 | 4px | `--spacing-4` |
 | 8 | 8px | `--spacing-8` |
-| 12 | 12px | `--spacing-12` |
 | 16 | 16px | `--spacing-16` |
-| 20 | 20px | `--spacing-20` |
 | 24 | 24px | `--spacing-24` |
-| 28 | 28px | `--spacing-28` |
 | 32 | 32px | `--spacing-32` |
-| 36 | 36px | `--spacing-36` |
 | 40 | 40px | `--spacing-40` |
-| 48 | 48px | `--spacing-48` |
 | 64 | 64px | `--spacing-64` |
-| 68 | 68px | `--spacing-68` |
 | 80 | 80px | `--spacing-80` |
-| 120 | 120px | `--spacing-120` |
+| 128 | 128px | `--spacing-128` |
 
 ### Border Radius
 
 | Element | Value |
 |---------|-------|
-| cards | 36px |
-| icons | 40px |
-| pills | 10000px |
-| badges | 12px |
-| inputs | 14px |
-| buttons | 14px |
+| nav | 100px |
+| cards | 16px |
+| links | 24px |
+| badges | 1600px |
+| images | 1600px |
+| buttons | 1600px |
+| special | 100px |
 
 ### Shadows
 
 | Name | Value | Token |
 |------|-------|-------|
-| subtle | `rgba(255, 255, 255, 0.5) 0px 0.5px 0px 0px inset, rgba(11...` | `--shadow-subtle` |
-| subtle-2 | `rgb(228, 228, 231) 0px 1px 0px 0px inset` | `--shadow-subtle-2` |
-| subtle-3 | `rgb(255, 255, 255) 0px 0.5px 0px 0px inset` | `--shadow-subtle-3` |
-| subtle-4 | `rgb(255, 255, 255) 0px -0.5px 0px 0px` | `--shadow-subtle-4` |
-| subtle-5 | `rgb(228, 228, 231) 0px -1px 0px 0px` | `--shadow-subtle-5` |
-| md | `rgba(0, 0, 0, 0.04) 0px 4px 12px 0px` | `--shadow-md` |
+| lg | `rgba(75, 68, 57, 0.1) 0px 12px 24px 0px, rgba(75, 68, 57,...` | `--shadow-lg` |
+| sm | `rgba(75, 68, 57, 0.05) 0px 4px 4px 0px, rgba(75, 68, 57, ...` | `--shadow-sm` |
+| md | `rgba(99, 91, 79, 0.08) 0px 8px 16px 0px, rgba(99, 91, 79,...` | `--shadow-md` |
+| xl | `rgba(75, 68, 57, 0.1) 0px 48px 48px 0px` | `--shadow-xl` |
 
 ### Layout
 
 - **Page max-width:** 1200px
-- **Section gap:** 80px
-- **Card padding:** 28px
-- **Element gap:** 8px
+- **Section gap:** 64px
+- **Card padding:** 32px
+- **Element gap:** 16px
 
 ## Components
 
-### Primary Action Button (Dark Filled)
-**Role:** Main CTA — 'Book demo', 'Get started', 'Get match'
+### Primary CTA Button
+**Role:** Main call-to-action across all pages
 
-Background #09090b, white text (#ffffff), 1.5px solid #2c2e34 border with subtle inset highlight shadow, 14px border-radius, 12px vertical / 16px horizontal padding, 14px Cosmica weight 400. The near-black fill with hairline border creates depth without a drop shadow.
+Indigo (#4865ff) background, white text, 1600px border-radius (full pill), 8-12px vertical padding with 16-24px horizontal padding, Saans weight 500 at 14-16px. Casts the warm-tinted double shadow (rgba(75,68,57,0.1) at 12px/24px and 48px/48px offsets).
 
-### Ghost Action Button (White)
-**Role:** Secondary CTA on dark backgrounds
+### Ghost/Text Button
+**Role:** Secondary actions and inline links
 
-Background #ffffff, dark text (#3f3f46), 1px solid #3f3f46 border, 36px pill radius, 20px all padding, 14px Cosmica. Used in nav and contrasting on dark sections.
+Transparent background, Deep Ink (#080331) text, no border, Saans weight 500. Sometimes paired with an arrow icon. Used for navigation dropdowns and less prominent actions.
 
-### Neutral Pill Button (Light)
-**Role:** Subtle action on light backgrounds — 'Our work'
+### Pill Navigation Bar
+**Role:** Sticky top navigation
 
-Background #fafafa, text #18181b, 14px border-radius, 12px vertical / 16px horizontal padding, 14px Cosmica weight 400. No visible border — relies on the subtle background contrast.
+White (#ffffff) background with 1600px border-radius, floats above the cream canvas with warm-tinted shadow. Contains logo (left), nav links (center, Saans 14px weight 500), and CTA button (right). Internal spacing: 16-24px horizontal padding, 12-14px vertical.
 
-### Category Card (Image Top)
-**Role:** Service category showcase — 'Web & product', 'Motion design'
+### Tinted Feature Card
+**Role:** Product capability showcase
 
-Full-width image fills the top half, 36px border-radius, 28px bottom padding, no shadow. Title overlay or below image at 20px Cosmica weight 600. Tag pills sit inside the card at bottom.
+16px border-radius, 32px padding, colored background fill (Forest #328a3b, Blossom #f098d7, or other accent tints). Contains a small icon, serif subheading (Reckless Neue 24px), body description (Saans 16px), and a circular arrow button (white, 100px radius) in the top-right corner.
 
-### Dark Feature Card
-**Role:** Pain-point listing with arrow bullets
+### White Product Card
+**Role:** UI screenshot or detailed feature container
 
-Background #27272a or #18181b, white text, 28–36px border-radius, 24px padding. Each list item has a 20px Cosmica weight 500 with right-arrow accent. Creates a dark band that contrasts with the light page.
+White (#ffffff) background, 16px border-radius, 32px internal padding. Contains product UI screenshots or detailed feature breakdowns. Sits on cream canvas to create contrast layers.
 
-### Tag Pill Badge
-**Role:** Category tags — 'Web', 'UX/UI design', 'Mobile app'
+### Circular Portrait Frame
+**Role:** Hero decorative photography
 
-Transparent background with 1px solid #ececee border, text #18181b, 12px border-radius, 4px vertical / 8px horizontal padding, 12–13px Cosmica weight 400. Hairline border treatment keeps tags quiet.
+Circular image masks (essentially 50% border-radius or large radius values) containing portrait photography, set inside larger solid-color circles (pink, green, orange, white). These create the hero's signature scattered decorative composition and break the rectangular grid.
 
-### Filled Tag Badge
-**Role:** Accent tags — 'Software development', 'Marketing'
+### Info Badge/Pill
+**Role:** Category labels and tags
 
-Background #3f3f46, text #fafafa, 12px border-radius, 4px/8px padding. Used for skill/category labels that need more visual weight than outlined tags.
+1600px border-radius, 10px vertical padding, small text (Saans 12px). Used for section labels like 'THE PLATFORM', 'CASE STUDIES', and 'August Intelligence' indicators with a small icon prefix.
 
-### Orange Accent Badge
-**Role:** YC batch badges, highlight chips
+### Video Player Block
+**Role:** Case study and testimonial content
 
-Background #ff5a00, white text, 12px border-radius, 4px/8px padding. The sole chromatic badge — reserved for startup credibility signals and category emphasis.
-
-### Email Input Field
-**Role:** Hero email capture, newsletter signup
-
-White background (#ffffff), text #333333, 14px border-radius, 12px vertical / 16px horizontal padding, 1px transparent border. Pairs directly with a dark CTA button to its right.
+Large rectangular media container with 16px radius, cream or white surface, centered play button overlay (circular, indigo background, white triangle). Accompanied by centered serif headline above.
 
 ### Logo Strip
-**Role:** Social proof — partner/client logos
+**Role:** Social proof and trust signals
 
-Grayscale logos (Coca-Cola, Disney, Genesis, Udemy, EY) rendered in #71717a at 60–70% opacity, horizontally centered with even spacing. No background container.
+Horizontal row of partner/client logos on cream background, displayed in grayscale or muted tones, evenly spaced. No card containers — logos float directly on the cream canvas.
 
-### Stats Block
-**Role:** Headline metrics — '20 000+ completed projects'
+### Section Header
+**Role:** Section introduction and navigation
 
-Large number at 40–56px Cosmica weight 600 in #09090b, adjacent descriptor at 14px weight 400 in #52525b. Minimal spacing between number and label.
+Centered composition: small pill badge label at top, large serif headline (Reckless Neue 48-64px) below, optional subtext (Saans 16-20px) beneath. Generous vertical spacing (40-64px) between elements.
 
-### Breakthrough Image Section
-**Role:** Full-bleed visual divider — landscape/moss
+### Dropdown Nav Item
+**Role:** Expandable navigation sections
 
-Full-width photographic image (no overlay, no text), 48px or 64px corner radius on top corners, functions as a visual breath between content sections.
+Nav link with caret indicator. When active, shows a dropdown panel with white background, 16px radius, and warm-tinted shadow containing link lists.
 
-### Navigation Bar
-**Role:** Top-level site navigation
+### Gradient Hero Accent
+**Role:** Decorative background gradient
 
-Sticky white header, logo left, nav links center (14px Cosmica), login + dark CTA button right. No visible border — floats on canvas.
+Linear gradient (121deg) from pink rgb(204,122,181) through indigo rgb(72,101,255) to deep violet rgb(27,20,99). Used sparingly as a background treatment for special sections or feature highlights.
+
+### Outlined/Secondary Button
+**Role:** Alternative action variant
+
+Lavender Mist (#a2baff) border, transparent or white background, Deep Ink (#080331) text, 1600px radius. Used when Primary Indigo CTA is already present and a secondary action is needed.
 
 ## Do's and Don'ts
 
 ### Do
-- Use #09090b for all primary action buttons — the dark filled CTA is the system’s single most important interactive element
-- Set card border-radius to 36px and rely on 1px solid #ececee borders instead of shadows for elevation
-- Keep body text at 14–15px Cosmica weight 400 in #18181b — compact, dense, marketplace-grade
-- Reserve #ff5a00 exclusively for YC-style accent badges and startup credential chips — never use it for general UI
-- Use 56–64px Cosmica weight 600 with line-height 1.12–1.28 for hero and section display headlines
-- Apply 28px padding inside cards and 80px vertical rhythm between major page sections
-- Use 10000px border-radius for pill-shaped CTAs in the navigation, and 14px for inline action buttons
+- Use 1600px border-radius for all interactive elements: buttons, badges, nav bar, and image frames to maintain the pill-shaped consistency
+- Set the page canvas to Cream (#f8f3eb), not pure white — the warm tone is the brand's emotional foundation
+- Apply warm-tinted shadows (rgba(75,68,57,0.1)) to all elevated elements instead of cool gray shadows
+- Pair Reckless Neue (serif, weight 400 only) for all headings with Saans (sans, weights 400-500) for all body and UI text
+- Use Primary Indigo (#4865ff) exclusively for the primary action — do not dilute with secondary action colors when a strong CTA is needed
+- Layer surfaces as: cream canvas → white card → tinted card → vibrant accent to create depth without heavy shadows
+- Maintain 64px minimum vertical spacing between sections and 32px internal padding for all card containers
+- Center-align hero and section headlines for editorial compositions; use left-align only for product UI and dense content areas
 
 ### Don't
-- Do not introduce new accent colors — the system is 99% achromatic; adding blues, greens, or purples would break the restrained editorial register
-- Do not use drop shadows on cards — hairline borders at 1px solid #ececee are the only permitted elevation on content surfaces
-- Do not set display headlines below weight 600 — the bold weight is what makes the editorial typography read as authoritative
-- Do not use #ff5a00 for body text, links, or large fills — it’s a badge color, not a brand color for general UI
-- Do not use border-radius below 12px on any container — the system’s geometry is defined by generous rounding
-- Do not break the single-font rule — Cosmica handles every typographic role from 10px badges to 64px displays
-- Do not use pure black (#000000) — #09090b is the deepest permitted ink, keeping warmth in the neutrals
+- Do not use bold (600+) weights with Reckless Neue — the serif's power is in its regular weight restraint
+- Do not apply cool gray shadows (rgba(0,0,0,...)) — warm brown shadows are part of the visual identity
+- Do not use pure white (#ffffff) as the page background — cream is the base, white is for surfaces on top
+- Do not use the accent colors (Forest, Ember, Blossom) for primary CTAs — reserve Primary Indigo for that role
+- Do not add more than two weights to any text element — the system is intentionally restrained (400/500 for sans, 400 for serif)
+- Do not use sharp corners (0px radius) on cards or buttons — the minimum card radius is 16px, buttons are always pills
+- Do not break the cream/white/tinted surface hierarchy by placing a colored accent directly on cream without a white card container
+- Do not use green for success states or red for error states unless explicitly required — the accent colors are decorative, not semantic
 
 ## Surfaces
 
 | Level | Name | Value | Purpose |
 |-------|------|-------|---------|
-| 0 | Canvas | `#f4f4f5` | Page background — the warm-cool gray that fills the viewport |
-| 1 | Card | `#ffffff` | Elevated content surfaces sitting on the canvas |
-| 2 | Subtle Card | `#fafafa` | Slightly recessed surfaces within content areas |
-| 3 | Dark Surface | `#18181b` | Dark feature blocks and inverted sections |
-| 4 | Deep Dark | `#27272a` | Darker feature cards and dark mode accents |
+| 0 | Cream Canvas | `#f8f3eb` | Primary page background and section bands |
+| 1 | White Surface | `#ffffff` | Card surfaces, product UI mockups, elevated content blocks |
+| 2 | Tinted Card | `#f098d7` | Category-coded feature cards with pink wash |
+| 3 | Accent Surface | `#ffaefe` | Lightest accent fill for soft callouts and pill buttons |
+| 4 | Vibrant Accent | `#ff6d39` | Bold accent surface for portrait frames and high-energy cards |
 
 ## Elevation
 
-- **Primary Dark Button:** `inset 0 0.5px 0 0 rgba(255,255,255,0.5), inset 0 9px 14px -5px rgba(117,123,133,0.4), 0 0 0 1.5px rgb(44,46,52), 0 4px 6px 0 rgba(0,0,0,0.14)`
-- **Card:** `none — uses 1px solid #ececee hairline border instead`
-- **Link/Pill:** `inset 0 1px 0 0 rgb(228,228,231)`
+- **Primary CTA button:** `rgba(75, 68, 57, 0.1) 0px 12px 24px 0px, rgba(75, 68, 57, 0.1) 0px 48px 48px 0px`
+- **Card surface:** `rgba(75, 68, 57, 0.1) 0px 48px 48px 0px`
+- **Subtle elevation:** `rgba(75, 68, 57, 0.05) 0px 4px 4px 0px, rgba(75, 68, 57, 0.08) 0px 32px 16px 0px`
+- **Soft button:** `rgba(99, 91, 79, 0.08) 0px 8px 16px 0px, rgba(99, 91, 79, 0.04) 0px 32px 32px 0px`
 
 ## Imagery
 
-Photography plays a structural role rather than decorative: full-bleed landscape/macro nature shots (green moss, organic textures) serve as visual dividers between content sections, creating breath and warmth in an otherwise monochrome grid. Category cards use real product/work imagery — screenshots of apps, video thumbnails, design portfolios — filling the top half of rounded card containers. No illustrations or abstract graphics; no 3D renders. Logos in social-proof strips are desaturated to grayscale. Image treatment: no overlays, no duotone, no masks — raw photography with generous corner-radius (48–64px) to integrate with the rounded geometry of cards and sections. The overall density is image-medium: roughly 30–40% of viewport is photographic, concentrated in category showcases and breakthrough sections.
+Photography is central and humanizing: circular portrait crops of caregivers and seniors in vibrant colored frames (pink, green, orange) function as the hero's visual signature. Images are full-face, high-key, candid or semi-staged portraits — not lifestyle environmental shots. The circular masking with bold color halos is a recurring decorative motif. Product UI is shown as floating device mockup screenshots with generous radius. No illustrations or abstract graphics — all visual energy comes from real photography and product screenshots.
 
 ## Layout
 
-The page follows a centered max-width (1200px) container with generous vertical rhythm (80px section gaps). The hero is a split composition: massive left-aligned headline (56–64px) with rotating keyword animation, paired with a compact right-aligned email-capture form and supporting paragraph. Below the hero, a horizontal scroll of category image-cards creates a portfolio band. The mid-page alternates light card sections with dark feature blocks — a rhythm of #f4f4f5 canvas, white cards, then inverted dark surface for pain-point lists. Stats appear as a horizontal row of three large-number blocks. A full-bleed nature photograph breaks the grid before testimonial/social-proof sections. Navigation is a sticky white top bar with logo left, centered nav links, and a dark CTA right. The overall feel is editorial-magazine meets marketplace dashboard: spacious section gaps but compact internal card density.
+Max-width ~1200px centered content with full-bleed cream canvas. Hero is a centered headline stack (no sidebar image) flanked by scattered circular portrait frames that bleed to the page edges. Navigation is a floating pill-shaped bar (radius 1600px) with subtle shadow, positioned at the top. Sections alternate between white cards and cream backgrounds. Feature content uses 2-column card grids on cream. Case study sections use centered headlines above full-width video blocks. The overall rhythm is: generous vertical spacing (64px+), centered text compositions, and circular decorative elements that break the rectangular grid.
 
 ## Agent Prompt Guide
 
 **Quick Color Reference**
-- Background: #f4f4f5
-- Card surface: #ffffff
-- Text primary: #09090b
-- Text secondary: #18181b
-- Text muted: #52525b
-- Border: #ececee
-- Accent: #ff5a00
-- primary action: #09090b (filled action)
+- Background: #f8f3eb (cream)
+- Surface: #ffffff (white)
+- Text: #080331 (Deep Ink)
+- Border: #000000 (True Black, for high-contrast hairlines)
+- Accent: #4865ff (Primary Indigo)
+- primary action: #4865ff (filled action)
 
 **Example Component Prompts**
 
-1. *Hero Section*: Canvas #f4f4f5 background. Headline at 64px Cosmica weight 600, #09090b, line-height 1.12. Below, supporting paragraph at 15px Cosmica weight 400, #52525b. Email input: white background, 14px border-radius, 12px/16px padding, paired with dark CTA (#09090b fill, white text, 14px radius, 12px/16px padding). 80px vertical padding above and below.
+1. Create a Primary Action Button: #4865ff background, #ffffff text, 9999px radius, compact pill padding. Use this filled treatment for the main CTA.
 
-2. *Category Card Grid*: Each card is white (#ffffff) with 36px border-radius and 1px solid #ececee border. Image fills top half (no padding, flush to card edges). Bottom area has 28px padding containing a 20px Cosmica weight 600 title in #09090b and tag pills below (transparent background, 1px #ececee border, 12px radius, 4px/8px padding, 13px text in #18181b). 3–4 cards in a horizontal row with 16px gap.
+2. **Feature Card Grid (2-column)**: White (#ffffff) card, 16px border-radius, 32px padding. Icon (24px, #080331 stroke) in top-left. Heading: Reckless Neue 24px weight 400, #080331. Description: Saans 16px weight 400, #080331. Circular arrow button (100px radius, white background, #080331 arrow) in top-right corner.
 
-3. *Dark Feature Block*: Background #27272a, 28px border-radius, 24px all padding. White headline at 32px Cosmica weight 700. List items below: each prefixed with a right-arrow icon, 20px Cosmica weight 500 in white, 16px vertical gap between items.
 
-4. *Orange Accent Badge*: Background #ff5a00, white text, 12px border-radius, 4px/8px padding, 12px Cosmica weight 500. Use only for YC batch tags or single-word category highlights.
+4. **Tinted Category Card**: Background #f098d7 (Blossom), 16px radius, 32px padding. Icon prefix + heading: Reckless Neue 24px, #080331. Body: Saans 16px weight 400, #080331. Embedded product screenshot at bottom: white (#ffffff) container, 16px radius.
 
-5. *Stats Row*: Three blocks side by side. Large number at 56px Cosmica weight 600 in #09090b. Adjacent label at 14px Cosmica weight 400 in #52525b, sitting to the right of the number on the same baseline.
+5. **Section Header**: Centered. Small pill badge (1600px radius, 10px vertical padding, Saans 12px, #080331 text, cream or white background) above. Headline: Reckless Neue 48px weight 400, #080331, line-height 1.1. 40px gap to optional subtext: Saans 20px weight 400, #080331.
 
-## Geometry Philosophy
+## Visual Design Principles
 
-The system’s spatial language is defined by three radii that repeat everywhere: 12px for tags and small controls, 14px for buttons and inputs, and 36px for cards and large surfaces. Pill shapes (10000px) appear only in navigation CTAs. This creates a consistent visual rhythm where corners curve generously on containers but stay controlled on interactive elements. No sharp corners (0px) are used on visible UI — even the smallest chips get 12px rounding. The asymmetry between 14px (buttons) and 36px (cards) is deliberate: buttons feel precise and contained, cards feel inviting and spacious.
+1. **Warmth over sterility**: Every system decision (cream canvas, warm shadows, serif headlines) softens the clinical expectation of healthcare software. This is deliberate emotional design for a senior care audience.
+
+2. **Concentrated color**: The palette is mostly neutral cream and white. Color appears in specific, high-impact moments: circular portrait frames, tinted feature cards, and the single indigo CTA. This makes each color instance feel intentional and celebratory rather than decorative noise.
+
+3. **Pill everything**: 1600px radius is the default for all interactive surfaces and many decorative elements. This creates a soft, approachable, non-corporate geometry that distinguishes the system from angular enterprise software.
+
+4. **Editorial typography**: The serif/sans pairing (Reckless Neue + Saans) borrows from magazine design, not software UI conventions. Headlines are meant to be read and appreciated, not scanned. Weight 400 only for serif — no bold variants exist.
+
+5. **Layered surface hierarchy**: Four distinct surface levels (cream → white → tinted → vibrant) create depth through color temperature, not shadow weight. Cards cast minimal shadows because the color difference already establishes elevation.
+
+## Typography Pairing Rationale
+
+Reckless Neue (serif) and Saans (sans) form a deliberate editorial-meets-functional pairing. The serif carries emotional weight and trustworthiness — critical for a platform handling elder care data. Saans provides the precision and legibility needed for dense UI (tables, forms, data). Both are used at regular weight (400) as the primary, with Saans alone using 500 for interactive emphasis. This restraint means the visual hierarchy is created by size and color, not by weight contrast — a hallmark of confident editorial design.
 
 ## Similar Brands
 
-- **Linear** — Same monochromatic zinc-gray palette with hairline borders replacing shadows, and similarly compact 14px body text on generous rounded cards
-- **Vercel** — Dark filled CTAs on white canvas, large bold geometric display headlines, and near-zero chromatic palette with functional color only
-- **Stripe** — Editorial-grade typography with bold display weights at 48–64px, generous section spacing, and hairline border card treatments
-- **Framer** — Rounded geometry (28–36px cards), neutral-first palette with occasional vivid accent, and marketplace-style dense information layout
+- **Calm** — Warm cream canvas replacing cold white, editorial serif headlines, pill-shaped buttons, and concentrated accent color usage
+- **Headspace** — Warm off-white backgrounds, rounded pill buttons, and approachable typography that softens a typically clinical category
+- **Abridge** — Healthcare AI with serif/sans typography pairing, warm background tones, and indigo/violet as the primary brand color
+- **Sword Health** — Healthcare product using soft cream backgrounds, pill-shaped CTAs, and editorial serif display type against clean sans body text
+- **Walnut** — Warm cream surfaces, concentrated accent colors on otherwise neutral palette, and the editorial serif + geometric sans typography approach
 
 ## Quick Start
 
@@ -254,110 +266,93 @@ The system’s spatial language is defined by three radii that repeat everywhere
 ```css
 :root {
   /* Colors */
-  --color-obsidian: #09090b;
-  --color-graphite: #18181b;
-  --color-slate: #27272a;
-  --color-iron: #3f3f46;
-  --color-steel: #52525b;
-  --color-fog: #71717a;
-  --color-ash: #a1a1aa;
-  --color-mist: #d4d4d8;
-  --color-cloud: #ececee;
-  --color-paper: #f4f4f5;
-  --color-snow: #ffffff;
-  --color-ember: #ff5a00;
-  --color-magenta-spark: #fe45e2;
+  --color-primary-indigo: #4865ff;
+  --color-deep-ink: #080331;
+  --color-midnight-violet: #1b1463;
+  --color-forest: #328a3b;
+  --color-ember: #ff6d39;
+  --color-blossom: #f098d7;
+  --color-petal: #ffaefe;
+  --color-meadow: #114e0b;
+  --color-lavender-mist: #a2baff;
+  --color-cream: #f8f3eb;
+  --color-stone: #333333;
+  --color-pure-white: #ffffff;
+  --color-true-black: #000000;
+  --color-info-blue: #dce4fb;
 
   /* Typography — Font Families */
-  --font-cosmica: 'Cosmica', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-reckless-neue: 'Reckless Neue', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-saans: 'Saans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
   --text-caption: 12px;
-  --leading-caption: 1.64;
-  --text-body: 15px;
-  --leading-body: 1.45;
-  --text-body-lg: 18px;
-  --leading-body-lg: 1.45;
+  --leading-caption: 1.6;
+  --text-body-sm: 14px;
+  --leading-body-sm: 1.4;
+  --text-body: 16px;
+  --leading-body: 1.6;
   --text-subheading: 20px;
-  --leading-subheading: 1.5;
-  --text-heading-sm: 32px;
-  --leading-heading-sm: 1.5;
-  --text-heading: 40px;
-  --leading-heading: 1.28;
-  --text-heading-lg: 56px;
-  --leading-heading-lg: 1.28;
+  --leading-subheading: 1.3;
+  --text-heading-sm: 24px;
+  --leading-heading-sm: 1.3;
+  --text-heading: 32px;
+  --leading-heading: 1.1;
+  --text-heading-lg: 48px;
+  --leading-heading-lg: 1.1;
   --text-display: 64px;
-  --leading-display: 1.12;
+  --leading-display: 1;
 
   /* Typography — Weights */
-  --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
 
   /* Spacing */
-  --spacing-unit: 4px;
-  --spacing-4: 4px;
+  --spacing-unit: 8px;
   --spacing-8: 8px;
-  --spacing-12: 12px;
   --spacing-16: 16px;
-  --spacing-20: 20px;
   --spacing-24: 24px;
-  --spacing-28: 28px;
   --spacing-32: 32px;
-  --spacing-36: 36px;
   --spacing-40: 40px;
-  --spacing-48: 48px;
   --spacing-64: 64px;
-  --spacing-68: 68px;
   --spacing-80: 80px;
-  --spacing-120: 120px;
+  --spacing-128: 128px;
 
   /* Layout */
   --page-max-width: 1200px;
-  --section-gap: 80px;
-  --card-padding: 28px;
-  --element-gap: 8px;
+  --section-gap: 64px;
+  --card-padding: 32px;
+  --element-gap: 16px;
 
   /* Border Radius */
-  --radius-md: 6px;
-  --radius-xl: 12px;
   --radius-2xl: 16px;
-  --radius-2xl-2: 20px;
   --radius-3xl: 24px;
-  --radius-3xl-2: 28px;
-  --radius-3xl-3: 36px;
-  --radius-3xl-4: 40px;
   --radius-full: 48px;
-  --radius-full-2: 56px;
-  --radius-full-3: 64px;
-  --radius-full-4: 80px;
-  --radius-full-5: 1000px;
-  --radius-full-6: 10000px;
+  --radius-full-2: 100px;
+  --radius-full-3: 1600px;
+  --radius-full-4: 3200px;
 
   /* Named Radii */
-  --radius-cards: 36px;
-  --radius-icons: 40px;
-  --radius-pills: 10000px;
-  --radius-badges: 12px;
-  --radius-inputs: 14px;
-  --radius-buttons: 14px;
+  --radius-nav: 100px;
+  --radius-cards: 16px;
+  --radius-links: 24px;
+  --radius-badges: 1600px;
+  --radius-images: 1600px;
+  --radius-buttons: 1600px;
+  --radius-special: 100px;
 
   /* Shadows */
-  --shadow-subtle: rgba(255, 255, 255, 0.5) 0px 0.5px 0px 0px inset, rgba(117, 123, 133, 0.4) 0px 9px 14px -5px inset, rgb(44, 46, 52) 0px 0px 0px 1.5px, rgba(0, 0, 0, 0.14) 0px 4px 6px 0px;
-  --shadow-subtle-2: rgb(228, 228, 231) 0px 1px 0px 0px inset;
-  --shadow-subtle-3: rgb(255, 255, 255) 0px 0.5px 0px 0px inset;
-  --shadow-subtle-4: rgb(255, 255, 255) 0px -0.5px 0px 0px;
-  --shadow-subtle-5: rgb(228, 228, 231) 0px -1px 0px 0px;
-  --shadow-md: rgba(0, 0, 0, 0.04) 0px 4px 12px 0px;
+  --shadow-lg: rgba(75, 68, 57, 0.1) 0px 12px 24px 0px, rgba(75, 68, 57, 0.1) 0px 48px 48px 0px;
+  --shadow-sm: rgba(75, 68, 57, 0.05) 0px 4px 4px 0px, rgba(75, 68, 57, 0.08) 0px 32px 16px 0px;
+  --shadow-md: rgba(99, 91, 79, 0.08) 0px 8px 16px 0px, rgba(99, 91, 79, 0.04) 0px 32px 32px 0px;
+  --shadow-xl: rgba(75, 68, 57, 0.1) 0px 48px 48px 0px;
 
   /* Surfaces */
-  --surface-canvas: #f4f4f5;
-  --surface-card: #ffffff;
-  --surface-subtle-card: #fafafa;
-  --surface-dark-surface: #18181b;
-  --surface-deep-dark: #27272a;
+  --surface-cream-canvas: #f8f3eb;
+  --surface-white-surface: #ffffff;
+  --surface-tinted-card: #f098d7;
+  --surface-accent-surface: #ffaefe;
+  --surface-vibrant-accent: #ff6d39;
 }
 ```
 
@@ -366,80 +361,65 @@ The system’s spatial language is defined by three radii that repeat everywhere
 ```css
 @theme {
   /* Colors */
-  --color-obsidian: #09090b;
-  --color-graphite: #18181b;
-  --color-slate: #27272a;
-  --color-iron: #3f3f46;
-  --color-steel: #52525b;
-  --color-fog: #71717a;
-  --color-ash: #a1a1aa;
-  --color-mist: #d4d4d8;
-  --color-cloud: #ececee;
-  --color-paper: #f4f4f5;
-  --color-snow: #ffffff;
-  --color-ember: #ff5a00;
-  --color-magenta-spark: #fe45e2;
+  --color-primary-indigo: #4865ff;
+  --color-deep-ink: #080331;
+  --color-midnight-violet: #1b1463;
+  --color-forest: #328a3b;
+  --color-ember: #ff6d39;
+  --color-blossom: #f098d7;
+  --color-petal: #ffaefe;
+  --color-meadow: #114e0b;
+  --color-lavender-mist: #a2baff;
+  --color-cream: #f8f3eb;
+  --color-stone: #333333;
+  --color-pure-white: #ffffff;
+  --color-true-black: #000000;
+  --color-info-blue: #dce4fb;
 
   /* Typography */
-  --font-cosmica: 'Cosmica', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-reckless-neue: 'Reckless Neue', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-saans: 'Saans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
   --text-caption: 12px;
-  --leading-caption: 1.64;
-  --text-body: 15px;
-  --leading-body: 1.45;
-  --text-body-lg: 18px;
-  --leading-body-lg: 1.45;
+  --leading-caption: 1.6;
+  --text-body-sm: 14px;
+  --leading-body-sm: 1.4;
+  --text-body: 16px;
+  --leading-body: 1.6;
   --text-subheading: 20px;
-  --leading-subheading: 1.5;
-  --text-heading-sm: 32px;
-  --leading-heading-sm: 1.5;
-  --text-heading: 40px;
-  --leading-heading: 1.28;
-  --text-heading-lg: 56px;
-  --leading-heading-lg: 1.28;
+  --leading-subheading: 1.3;
+  --text-heading-sm: 24px;
+  --leading-heading-sm: 1.3;
+  --text-heading: 32px;
+  --leading-heading: 1.1;
+  --text-heading-lg: 48px;
+  --leading-heading-lg: 1.1;
   --text-display: 64px;
-  --leading-display: 1.12;
+  --leading-display: 1;
 
   /* Spacing */
-  --spacing-4: 4px;
   --spacing-8: 8px;
-  --spacing-12: 12px;
   --spacing-16: 16px;
-  --spacing-20: 20px;
   --spacing-24: 24px;
-  --spacing-28: 28px;
   --spacing-32: 32px;
-  --spacing-36: 36px;
   --spacing-40: 40px;
-  --spacing-48: 48px;
   --spacing-64: 64px;
-  --spacing-68: 68px;
   --spacing-80: 80px;
-  --spacing-120: 120px;
+  --spacing-128: 128px;
 
   /* Border Radius */
-  --radius-md: 6px;
-  --radius-xl: 12px;
   --radius-2xl: 16px;
-  --radius-2xl-2: 20px;
   --radius-3xl: 24px;
-  --radius-3xl-2: 28px;
-  --radius-3xl-3: 36px;
-  --radius-3xl-4: 40px;
   --radius-full: 48px;
-  --radius-full-2: 56px;
-  --radius-full-3: 64px;
-  --radius-full-4: 80px;
-  --radius-full-5: 1000px;
-  --radius-full-6: 10000px;
+  --radius-full-2: 100px;
+  --radius-full-3: 1600px;
+  --radius-full-4: 3200px;
 
   /* Shadows */
-  --shadow-subtle: rgba(255, 255, 255, 0.5) 0px 0.5px 0px 0px inset, rgba(117, 123, 133, 0.4) 0px 9px 14px -5px inset, rgb(44, 46, 52) 0px 0px 0px 1.5px, rgba(0, 0, 0, 0.14) 0px 4px 6px 0px;
-  --shadow-subtle-2: rgb(228, 228, 231) 0px 1px 0px 0px inset;
-  --shadow-subtle-3: rgb(255, 255, 255) 0px 0.5px 0px 0px inset;
-  --shadow-subtle-4: rgb(255, 255, 255) 0px -0.5px 0px 0px;
-  --shadow-subtle-5: rgb(228, 228, 231) 0px -1px 0px 0px;
-  --shadow-md: rgba(0, 0, 0, 0.04) 0px 4px 12px 0px;
+  --shadow-lg: rgba(75, 68, 57, 0.1) 0px 12px 24px 0px, rgba(75, 68, 57, 0.1) 0px 48px 48px 0px;
+  --shadow-sm: rgba(75, 68, 57, 0.05) 0px 4px 4px 0px, rgba(75, 68, 57, 0.08) 0px 32px 16px 0px;
+  --shadow-md: rgba(99, 91, 79, 0.08) 0px 8px 16px 0px, rgba(99, 91, 79, 0.04) 0px 32px 32px 0px;
+  --shadow-xl: rgba(75, 68, 57, 0.1) 0px 48px 48px 0px;
 }
 ```
