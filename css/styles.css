@@ -499,6 +499,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
   flex-direction: column;
   gap: 12px;
   align-items: flex-start;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.cta-card:hover,
+.cta-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-indigo);
 }
 
 .cta-card-title {
@@ -513,7 +522,25 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
 .cta-card-desc {
   font-size: var(--text-body);
   color: var(--color-stone);
-  margin-bottom: 8px;
+}
+
+.cta-card-arrow {
+  margin-top: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary-indigo);
+  color: var(--color-pure-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.cta-card:hover .cta-card-arrow {
+  transform: translateX(4px);
 }
 
 /* ==========================================================================
