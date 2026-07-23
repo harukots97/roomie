@@ -3,8 +3,8 @@
 // ---------------------------------------------------------------------------
 const CONFIG = {
   typeform: {
-    landlord: "#", // "I have a flat that needs the right people"
-    seeker: "#",   // "I'm ready to find my new home"
+    landlord: "https://c15iv32y3tm.typeform.com/to/zjX7zwV7", // "I have a flat that needs the right people"
+    seeker: "https://c15iv32y3tm.typeform.com/to/rOkKucdL",   // "I'm ready to find my new home"
   },
   stripe: {
     3: "https://buy.stripe.com/00wbJ05OxcpZ8BH2gQgQE00",
