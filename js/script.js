@@ -7,9 +7,9 @@ const CONFIG = {
     seeker: "#",   // "I'm ready to find my new home"
   },
   stripe: {
-    3: "#",
-    5: "#",
-    10: "#",
+    3: "https://buy.stripe.com/00wbJ05OxcpZ8BH2gQgQE00",
+    5: "https://buy.stripe.com/cNi6oGfp74Xxg495t2gQE01",
+    10: "https://buy.stripe.com/cNi5kC1yhcpZbNT4oYgQE02",
   },
 };
 
