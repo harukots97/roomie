@@ -357,18 +357,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
     object-fit: cover;
     display: block;
   }
-  .portrait-1 { top: 8%; left: 3%; width: 128px; height: 128px; background: var(--color-blossom); }
-  .portrait-1 .portrait-inner { width: 92px; height: 92px; }
-  .portrait-2 { top: 58%; left: 8%; width: 96px; height: 96px; background: var(--color-pure-white); box-shadow: var(--shadow-sm); }
-  .portrait-2 .portrait-inner { width: 68px; height: 68px; }
-  .portrait-3 { top: 4%; right: 6%; width: 108px; height: 108px; background: var(--color-forest); }
-  .portrait-3 .portrait-inner { width: 78px; height: 78px; }
-  .portrait-4 { top: 62%; right: 2%; width: 140px; height: 140px; background: var(--color-ember); }
-  .portrait-4 .portrait-inner { width: 100px; height: 100px; }
-}
-@media (min-width: 1140px) {
-  .portrait-1 { left: -1%; }
-  .portrait-4 { right: -3%; }
+  .portrait-1 { top: 18%; left: 10%; width: 148px; height: 148px; background: var(--color-blossom); }
+  .portrait-1 .portrait-inner { width: 108px; height: 108px; }
+  .portrait-2 { top: 42%; left: 14%; width: 112px; height: 112px; background: var(--color-pure-white); box-shadow: var(--shadow-sm); }
+  .portrait-2 .portrait-inner { width: 80px; height: 80px; }
+  .portrait-3 { top: 14%; right: 14%; width: 126px; height: 126px; background: var(--color-forest); }
+  .portrait-3 .portrait-inner { width: 92px; height: 92px; }
+  .portrait-4 { top: 46%; right: 10%; width: 160px; height: 160px; background: var(--color-ember); }
+  .portrait-4 .portrait-inner { width: 116px; height: 116px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .portrait-frame { transition: none; }
@@ -398,27 +394,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
 .tinted-card--forest { background: var(--color-forest); color: var(--color-pure-white); }
 .tinted-card--ember { background: var(--color-ember); color: var(--color-pure-white); }
 
-.tinted-card-arrow {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--surface-white);
-  color: var(--color-deep-ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
-
 .tinted-card-title {
   font-family: var(--font-reckless-neue);
   font-weight: 400;
   font-size: var(--text-heading-sm);
   line-height: var(--leading-heading-sm);
-  margin-top: 40px;
 }
 
 .tinted-card-desc {
@@ -507,15 +487,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
   flex-direction: column;
   gap: 12px;
   align-items: flex-start;
-  border: 2px solid transparent;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .cta-card:hover,
 .cta-card:focus-visible {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary-indigo);
 }
 
 .cta-card-title {
@@ -596,9 +574,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
   border-radius: var(--radius-cards);
   padding: 32px 24px;
   cursor: pointer;
-  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
-.pledge-card:hover { transform: translateY(-2px); }
+.pledge-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 
 .pledge-radio {
   position: absolute;
@@ -616,13 +594,19 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
 }
 
 .pledge-card:has(.pledge-radio:checked) {
-  background: var(--surface-white);
-  border-color: var(--color-primary-indigo);
-  box-shadow: var(--shadow-md);
+  background: var(--color-ember);
+  border-color: var(--color-ember);
+}
+.pledge-card:has(.pledge-radio:checked) .pledge-amount,
+.pledge-card:has(.pledge-radio:checked) .pledge-tier-name {
+  color: var(--color-pure-white);
+}
+.pledge-card:has(.pledge-radio:checked) .pledge-desc {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .pledge-card--popular { background: var(--surface-white); border-color: var(--color-lavender-mist); }
-.pledge-card--popular:has(.pledge-radio:checked) { border-color: var(--color-primary-indigo); }
+.pledge-card--popular:has(.pledge-radio:checked) { background: var(--color-ember); border-color: var(--color-ember); }
 
 .pledge-popular-badge {
   position: absolute;
