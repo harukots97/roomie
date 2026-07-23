@@ -45,6 +45,40 @@ if (pledgeRadios.length && pledgeSubmit) {
 }
 
 // ---------------------------------------------------------------------------
+// Hero portrait parallax — circles drift opposite the mouse position
+// ---------------------------------------------------------------------------
+const heroEl = document.querySelector(".hero");
+const portraitFrames = document.querySelectorAll(".portrait-frame");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (heroEl && portraitFrames.length && !prefersReducedMotion) {
+  let pointerX = 0;
+  let pointerY = 0;
+  let rafId = null;
+
+  const applyParallax = () => {
+    portraitFrames.forEach((frame) => {
+      const depth = Number(frame.getAttribute("data-depth")) || 12;
+      frame.style.transform = `translate3d(${pointerX * depth}px, ${pointerY * depth}px, 0)`;
+    });
+    rafId = null;
+  };
+
+  heroEl.addEventListener("mousemove", (event) => {
+    const rect = heroEl.getBoundingClientRect();
+    pointerX = (event.clientX - rect.left) / rect.width - 0.5;
+    pointerY = (event.clientY - rect.top) / rect.height - 0.5;
+    if (rafId === null) rafId = requestAnimationFrame(applyParallax);
+  });
+
+  heroEl.addEventListener("mouseleave", () => {
+    pointerX = 0;
+    pointerY = 0;
+    if (rafId === null) rafId = requestAnimationFrame(applyParallax);
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Mobile nav toggle
 // ---------------------------------------------------------------------------
 const navToggle = document.getElementById("nav-toggle");
