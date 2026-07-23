@@ -23,6 +23,7 @@
       <a href="#problem">The problem</a>
       <a href="#how-it-works">How it works</a>
       <a href="#quirks">Preferences</a>
+      <a href="#support">Back us</a>
       <a href="#roadmap">Roadmap</a>
     </nav>
 
@@ -165,13 +166,55 @@
         </div>
       </div>
 
-      <div class="support-block">
-        <p class="support-text">Just believe in the idea? Chip in and help us build it.</p>
-        <div class="support-actions">
-          <a href="#" class="btn btn-outline" data-stripe="3" target="_blank" rel="noopener">€3</a>
-          <a href="#" class="btn btn-outline" data-stripe="5" target="_blank" rel="noopener">€5</a>
-          <a href="#" class="btn btn-outline" data-stripe="10" target="_blank" rel="noopener">€10</a>
-        </div>
+    </div>
+  </section>
+
+  <!-- BACK US -->
+  <section class="section pledge-section" id="support">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-heading">Back us. Get in first.</h2>
+        <p class="section-sub">A small pledge gets you early access, first feedback slot, and one month premium free — no charge until we're ready.</p>
+      </div>
+
+      <fieldset class="pledge-grid">
+        <legend class="sr-only">Choose a pledge amount</legend>
+
+        <label class="pledge-card" for="pledge-3">
+          <input type="radio" class="pledge-radio" name="pledge-tier" id="pledge-3" value="3" data-tier="Supporter">
+          <span class="pledge-amount">€3</span>
+          <span class="pledge-tier-name">Supporter</span>
+          <span class="pledge-desc">A small gesture that means a lot to us.</span>
+        </label>
+
+        <label class="pledge-card pledge-card--popular" for="pledge-5">
+          <span class="badge badge-primary pledge-popular-badge">Popular</span>
+          <input type="radio" class="pledge-radio" name="pledge-tier" id="pledge-5" value="5" data-tier="Backer" checked>
+          <span class="pledge-amount">€5</span>
+          <span class="pledge-tier-name">Backer</span>
+          <span class="pledge-desc">You want in early and want to help shape it.</span>
+        </label>
+
+        <label class="pledge-card" for="pledge-10">
+          <input type="radio" class="pledge-radio" name="pledge-tier" id="pledge-10" value="10" data-tier="Champion">
+          <span class="pledge-amount">€10</span>
+          <span class="pledge-tier-name">Champion</span>
+          <span class="pledge-desc">All-in. You will help define what Roomie becomes.</span>
+        </label>
+      </fieldset>
+
+      <div class="pledge-benefits">
+        <p class="pledge-benefits-title">Every supporter gets</p>
+        <ul class="pledge-benefits-list">
+          <li>Test new features before anyone else</li>
+          <li>Your feedback gets read and acted on</li>
+          <li>1 month premium free when we launch</li>
+        </ul>
+      </div>
+
+      <div class="pledge-cta">
+        <a href="#" id="pledge-submit" class="btn btn-primary btn-lg" data-stripe="5" target="_blank" rel="noopener">Pay €5 as a Backer</a>
+        <p class="pledge-fineprint">Secure payment via Stripe. Full refund if Roomie never launches — minus Stripe's processing fee.</p>
       </div>
     </div>
   </section>

@@ -516,22 +516,163 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
   margin-bottom: 8px;
 }
 
-.support-block {
-  margin-top: 32px;
-  padding: 24px 32px;
-  border-radius: var(--radius-cards);
-  background: var(--surface-white);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+/* ==========================================================================
+   Back us — pledge tiers
+   ========================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.support-text { font-size: var(--text-body); color: var(--color-deep-ink); }
+.pledge-section .container {
+  background: var(--surface-white);
+  border-radius: 24px;
+  box-shadow: var(--shadow-xl);
+  padding: 48px 24px;
+}
+@media (min-width: 768px) { .pledge-section .container { padding: 64px 48px; } }
 
-.support-actions { display: flex; gap: 10px; }
+.pledge-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  border: 0;
+  margin: 0 0 48px;
+  padding: 0;
+}
+@media (min-width: 768px) { .pledge-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+
+.pledge-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  align-items: center;
+  background: var(--surface-cream);
+  border: 2px solid transparent;
+  border-radius: var(--radius-cards);
+  padding: 32px 24px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.pledge-card:hover { transform: translateY(-2px); }
+
+.pledge-radio {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.pledge-radio:focus-visible {
+  outline: 2px solid var(--color-primary-indigo);
+  outline-offset: 2px;
+  border-radius: var(--radius-cards);
+}
+
+.pledge-card:has(.pledge-radio:checked) {
+  background: var(--surface-white);
+  border-color: var(--color-primary-indigo);
+  box-shadow: var(--shadow-md);
+}
+
+.pledge-card--popular { background: var(--surface-white); border-color: var(--color-lavender-mist); }
+.pledge-card--popular:has(.pledge-radio:checked) { border-color: var(--color-primary-indigo); }
+
+.pledge-popular-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+}
+
+.pledge-amount {
+  font-family: var(--font-reckless-neue);
+  font-weight: 400;
+  font-size: var(--text-heading-lg);
+  line-height: 1;
+  color: var(--color-deep-ink);
+  margin-top: 8px;
+}
+
+.pledge-tier-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary-indigo);
+}
+
+.pledge-desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-stone);
+  line-height: 1.5;
+  max-width: 220px;
+}
+
+.pledge-benefits {
+  text-align: center;
+  margin: 0 auto 40px;
+  max-width: 480px;
+}
+
+.pledge-benefits-title {
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  color: var(--color-stone);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+
+.pledge-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+@media (min-width: 640px) {
+  .pledge-benefits-list { flex-direction: row; justify-content: center; gap: 32px; }
+}
+
+.pledge-benefits-list li {
+  font-size: var(--text-body-sm);
+  color: var(--color-deep-ink);
+  font-weight: 500;
+  padding-left: 22px;
+  position: relative;
+  text-align: left;
+}
+.pledge-benefits-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-primary-indigo);
+  font-weight: 700;
+}
+
+.pledge-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.pledge-fineprint {
+  font-size: var(--text-caption);
+  color: var(--color-stone);
+  max-width: 360px;
+}
 
 /* ==========================================================================
    Roadmap

@@ -26,6 +26,25 @@ document.querySelectorAll("[data-stripe]").forEach((el) => {
 });
 
 // ---------------------------------------------------------------------------
+// Pledge tier selector — updates the single CTA to match the chosen amount
+// ---------------------------------------------------------------------------
+const pledgeRadios = document.querySelectorAll(".pledge-radio");
+const pledgeSubmit = document.getElementById("pledge-submit");
+
+if (pledgeRadios.length && pledgeSubmit) {
+  pledgeRadios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      const amount = radio.value;
+      const tier = radio.getAttribute("data-tier");
+      pledgeSubmit.textContent = `Pay €${amount} as a ${tier}`;
+      pledgeSubmit.setAttribute("data-stripe", amount);
+      const url = CONFIG.stripe[amount];
+      pledgeSubmit.href = url && url !== "#" ? url : "#";
+    });
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Mobile nav toggle
 // ---------------------------------------------------------------------------
 const navToggle = document.getElementById("nav-toggle");
@@ -52,7 +71,7 @@ if (navToggle && navLinks) {
 document.documentElement.classList.add("js-ready");
 
 const revealTargets = document.querySelectorAll(
-  ".section-header, .tinted-card, .step-card, .cta-card, .roadmap-card, .support-block"
+  ".section-header, .tinted-card, .step-card, .cta-card, .roadmap-card, .pledge-grid, .pledge-benefits, .pledge-cta"
 );
 revealTargets.forEach((el) => el.classList.add("reveal"));
 
