@@ -111,18 +111,20 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
   border-radius: 50%;
   pointer-events: none;
 }
-.decor-shape--tr { top: -40px; right: -40px; }
-.decor-shape--bl { bottom: -40px; left: -40px; }
+/* bleed is set per size class below, proportional to each shape's own
+   diameter — a fixed offset made large shapes clip with a jarring flat
+   chop (barely any of the circle hidden) and left small shapes almost
+   entirely clipped away, depending on size. */
+.decor-shape--tr { top: calc(-1 * var(--bleed)); right: calc(-1 * var(--bleed)); }
+.decor-shape--bl { bottom: calc(-1 * var(--bleed)); left: calc(-1 * var(--bleed)); }
 
-.decor-shape--lg { width: 260px; height: 260px; }
-.decor-shape--md { width: 200px; height: 200px; }
-.decor-shape--sm { width: 140px; height: 140px; }
+.decor-shape--lg { width: 260px; height: 260px; --bleed: 120px; }
+.decor-shape--md { width: 200px; height: 200px; --bleed: 90px; }
+.decor-shape--sm { width: 140px; height: 140px; --bleed: 60px; }
 @media (max-width: 639px) {
-  .decor-shape--tr { top: -50px; right: -50px; }
-  .decor-shape--bl { bottom: -50px; left: -50px; }
-  .decor-shape--lg { width: 140px; height: 140px; }
-  .decor-shape--md { width: 110px; height: 110px; }
-  .decor-shape--sm { width: 80px; height: 80px; }
+  .decor-shape--lg { width: 140px; height: 140px; --bleed: 65px; }
+  .decor-shape--md { width: 110px; height: 110px; --bleed: 50px; }
+  .decor-shape--sm { width: 80px; height: 80px; --bleed: 35px; }
 }
 
 .decor-shape--lavender { background: var(--color-lavender-mist); }
