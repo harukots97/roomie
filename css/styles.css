@@ -234,19 +234,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--font-reckless-neue);
-  font-size: 20px;
-  color: var(--color-deep-ink);
   flex-shrink: 0;
 }
 
-.logo-mark {
-  width: 22px;
+.logo-img {
   height: 22px;
-  border-radius: 50%;
-  background: var(--color-primary-indigo);
-  flex-shrink: 0;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
