@@ -98,6 +98,40 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary-i
 .section { padding: 48px 0; }
 @media (min-width: 768px) { .section { padding: var(--section-gap) 0; } }
 
+/* ==========================================================================
+   Decorative shapes — scattered circles echoing the hero portrait motif,
+   kept visible on mobile (unlike the hero portraits, which hide below 860px)
+   ========================================================================== */
+.section--decor { position: relative; overflow: hidden; }
+.section--decor .container { position: relative; z-index: 1; }
+
+.decor-shape {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.decor-shape--tr { top: -40px; right: -40px; }
+.decor-shape--bl { bottom: -40px; left: -40px; }
+
+.decor-shape--lg { width: 260px; height: 260px; }
+.decor-shape--md { width: 200px; height: 200px; }
+.decor-shape--sm { width: 140px; height: 140px; }
+@media (max-width: 639px) {
+  .decor-shape--tr { top: -50px; right: -50px; }
+  .decor-shape--bl { bottom: -50px; left: -50px; }
+  .decor-shape--lg { width: 140px; height: 140px; }
+  .decor-shape--md { width: 110px; height: 110px; }
+  .decor-shape--sm { width: 80px; height: 80px; }
+}
+
+.decor-shape--lavender { background: var(--color-lavender-mist); }
+.decor-shape--blossom { background: var(--color-blossom); }
+.decor-shape--petal { background: var(--color-petal); }
+.decor-shape--info { background: var(--color-info-blue); }
+.decor-shape--ember { background: var(--color-ember); opacity: 0.3; }
+.decor-shape--forest { background: var(--color-forest); opacity: 0.25; }
+
 .section-header {
   max-width: 640px;
   margin: 0 auto 48px;
