@@ -2,22 +2,12 @@
 // CONFIG — drop your real links in here once you have them.
 // ---------------------------------------------------------------------------
 const CONFIG = {
-  typeform: {
-    landlord: "https://c15iv32y3tm.typeform.com/to/zjX7zwV7", // "I have a flat that needs the right people"
-    seeker: "https://c15iv32y3tm.typeform.com/to/rOkKucdL",   // "I'm ready to find my new home"
-  },
   stripe: {
     3: "https://buy.stripe.com/00wbJ05OxcpZ8BH2gQgQE00",
     5: "https://buy.stripe.com/cNi6oGfp74Xxg495t2gQE01",
     10: "https://buy.stripe.com/cNi5kC1yhcpZbNT4oYgQE02",
   },
 };
-
-document.querySelectorAll("[data-typeform]").forEach((el) => {
-  const key = el.getAttribute("data-typeform");
-  const url = CONFIG.typeform[key];
-  if (url && url !== "#") el.href = url;
-});
 
 document.querySelectorAll("[data-stripe]").forEach((el) => {
   const key = el.getAttribute("data-stripe");
