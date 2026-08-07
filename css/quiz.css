@@ -2,15 +2,23 @@
    Roomie quiz — mobile-first, warm section-to-section transitions
    ========================================================================== */
 
+html {
+  /* belt-and-suspenders: covers the rubber-band overscroll area on mobile
+     Safari, which paints past the body if only body has a background. */
+  background: var(--surface-cream);
+}
+
 .quiz-body {
   background: var(--surface-cream);
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .quiz-shell {
   --quiz-accent: var(--color-primary-indigo);
   --quiz-tint: color-mix(in srgb, var(--quiz-accent) 5%, var(--surface-cream));
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--quiz-tint);
@@ -130,6 +138,19 @@
   justify-content: center;
   gap: 24px;
   text-align: center;
+}
+
+.quiz-success-icon {
+  align-self: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-forest);
+  color: var(--color-pure-white);
+  box-shadow: var(--shadow-md);
 }
 
 .quiz-intro-badge {
@@ -447,7 +468,48 @@
   color: var(--color-stone);
 }
 
+.quiz-result-support {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  background: color-mix(in srgb, var(--color-ember) 10%, var(--surface-white));
+  border-radius: var(--radius-cards);
+  padding: 24px;
+}
+
+.quiz-result-support-eyebrow {
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ember);
+}
+
+.quiz-result-support-text {
+  font-size: var(--text-body-sm);
+  color: var(--color-deep-ink);
+  line-height: 1.5;
+  max-width: 320px;
+}
+
+.quiz-result-support .btn {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.quiz-result-retake {
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  color: var(--color-stone);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.15s ease;
+}
+.quiz-result-retake:hover { text-decoration-color: currentColor; }
+
 @media (min-width: 640px) {
-  .quiz-result-actions { flex-direction: row; }
-  .quiz-result-actions .btn { flex: 1; }
+  .quiz-result-support .btn { width: auto; min-width: 220px; }
 }

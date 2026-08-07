@@ -9,6 +9,9 @@
 // ---------------------------------------------------------------------------
 const QUIZ_CONFIG = {
   webhookUrl: "",
+  // Same €3 pledge link as the "Back us" section on index.html (CONFIG.stripe[3]
+  // in js/script.js) — update both if the Stripe link ever changes.
+  backUsUrl: "https://buy.stripe.com/00wbJ05OxcpZ8BH2gQgQE00",
 };
 
 const ACCENTS = {
@@ -18,6 +21,7 @@ const ACCENTS = {
   rhythm: "#c4479a",
   money: "var(--color-midnight-violet)",
   email: "var(--color-primary-indigo)",
+  success: "var(--color-primary-indigo)",
   result: "var(--color-primary-indigo)",
 };
 
@@ -28,6 +32,7 @@ const SECTION_LABELS = {
   rhythm: "Rhythm",
   money: "Money & conflict style",
   email: "Almost there",
+  success: "All set",
   result: "Your result",
 };
 
@@ -242,6 +247,7 @@ const SCREENS = [
   ]),
 
   { id: "email", type: "email", section: "email" },
+  { id: "success", type: "success", section: "success" },
   { id: "result", type: "result", section: "result" },
 ];
 
@@ -467,6 +473,7 @@ function updateTopbar(screen) {
 function buildScreenHTML(screen) {
   if (screen.id === "intro") return buildIntroHTML();
   if (screen.id === "email") return buildEmailHTML();
+  if (screen.id === "success") return buildSuccessHTML();
   if (screen.id === "result") return buildResultHTML();
   return buildQuestionHTML(screen);
 }
@@ -603,11 +610,26 @@ function buildEmailHTML() {
     <div class="quiz-fields">
       <div class="quiz-field">
         <input type="email" class="quiz-text-input" id="quiz-email-input" placeholder="you@email.com" value="${escapeAttr(value)}" autocomplete="email" />
-        <p class="quiz-email-note">We'll use this to show you your flatmate type and, once we have a match, to reach out. No spam, no third parties.</p>
+        <p class="quiz-email-note">We promise not to spam you. We'll only ever email you about your matches, nothing else.</p>
       </div>
     </div>
     <div class="quiz-footer">
-      <button type="button" class="quiz-continue" data-action="submit-email" ${isValidEmail(value) ? "" : "disabled"}>See my result</button>
+      <button type="button" class="quiz-continue" data-action="submit-email" ${isValidEmail(value) ? "" : "disabled"}>Finish the quiz</button>
+    </div>
+  `;
+}
+
+function buildSuccessHTML() {
+  return `
+    <div class="quiz-intro">
+      <div class="quiz-success-icon" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h1 class="quiz-intro-heading">You're all set.</h1>
+      <p class="quiz-intro-sub">Your quiz is in. We're matching you with people who actually fit your answers, and we'll email you the moment we've got someone.</p>
+      <div class="quiz-intro-actions">
+        <button type="button" class="btn btn-primary btn-lg" data-action="advance">See my flatmate type</button>
+      </div>
     </div>
   `;
 }
@@ -634,12 +656,18 @@ function buildResultHTML() {
         <p class="quiz-result-flavor">${result.flavorSentence}</p>
       </div>
 
-      <p class="quiz-result-status" id="quiz-result-status">Saving your answers…</p>
+      <p class="quiz-result-status" id="quiz-result-status">${state.submitStatus || "Saving your answers…"}</p>
+
+      <div class="quiz-result-support">
+        <p class="quiz-result-support-eyebrow">Help us build this</p>
+        <p class="quiz-result-support-text">A small pledge gets you early access and first pick of matches when we launch.</p>
+        <a href="${QUIZ_CONFIG.backUsUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Back us for €3</a>
+      </div>
 
       <div class="quiz-result-actions">
-        <button type="button" class="btn btn-primary btn-lg" data-action="share">Share your result</button>
-        <button type="button" class="btn btn-outline btn-lg" data-action="retake">Retake the quiz</button>
+        <button type="button" class="btn btn-outline btn-lg" data-action="share">Share your result</button>
       </div>
+      <button type="button" class="quiz-result-retake" data-action="retake">Retake the quiz</button>
     </div>
   `;
 }
@@ -662,6 +690,7 @@ function handleClick(e, container, screen) {
   const action = target.getAttribute("data-action");
 
   if (action === "start") return next();
+  if (action === "advance") return next();
   if (action === "continue") return next();
   if (action === "retake") return retake();
   if (action === "share") return handleShare();
@@ -787,6 +816,13 @@ function isValidEmail(value) {
 // ---------------------------------------------------------------------------
 // Submission — saved locally first, then forwarded to the matching webhook
 // (see QUIZ_CONFIG at the top) if one has been configured.
+//
+// This runs while the success screen is showing (submission happens right
+// after email capture, but the result screen with #quiz-result-status isn't
+// rendered until the user taps through). So the outcome is kept on
+// state.submitStatus and read by buildResultHTML when it renders — the DOM
+// update below is a bonus for the rare case a slow webhook is still pending
+// once the user gets there.
 // ---------------------------------------------------------------------------
 async function submitQuizResult() {
   const record = {
@@ -804,10 +840,14 @@ async function submitQuizResult() {
     // localStorage unavailable (private mode, storage full) — nothing to do locally.
   }
 
-  const statusEl = document.getElementById("quiz-result-status");
+  const applyStatus = (message) => {
+    state.submitStatus = message;
+    const statusEl = document.getElementById("quiz-result-status");
+    if (statusEl) statusEl.textContent = message;
+  };
 
   if (!QUIZ_CONFIG.webhookUrl) {
-    if (statusEl) statusEl.textContent = "You're on the list. We'll email you when we have matches.";
+    applyStatus("You're on the list. We'll email you when we have matches.");
     return;
   }
 
@@ -818,10 +858,10 @@ async function submitQuizResult() {
       body: JSON.stringify(record),
       keepalive: true,
     });
-    if (statusEl) statusEl.textContent = "You're on the list. We'll email you when we have matches.";
+    applyStatus("You're on the list. We'll email you when we have matches.");
   } catch (err) {
     console.warn("Roomie quiz: could not reach the matching webhook, answers are saved locally.", err);
-    if (statusEl) statusEl.textContent = "Saved on this device. We'll email you when we have matches.";
+    applyStatus("Saved on this device. We'll email you when we have matches.");
   }
 }
 
