@@ -327,6 +327,29 @@ html {
 }
 .quiz-text-input:focus { border-color: var(--quiz-accent); }
 
+.quiz-textarea {
+  resize: vertical;
+  min-height: 88px;
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   Photo instructional block
+   ========================================================================== */
+.quiz-photo-block {
+  background: var(--surface-white);
+  border-radius: var(--radius-cards);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+}
+
+.quiz-photo-text {
+  font-size: var(--text-body);
+  color: var(--color-deep-ink);
+  line-height: 1.6;
+}
+.quiz-photo-text strong { color: var(--quiz-accent); }
+
 /* ==========================================================================
    Footer nav (continue button)
    ========================================================================== */
