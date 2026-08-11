@@ -10,16 +10,14 @@ import {
 } from "./quiz-shared.js";
 
 // ---------------------------------------------------------------------------
-// CONFIG — drop the real matching webhook in here once it exists.
-//
-// Any endpoint that accepts a JSON POST works: a Zapier/Make catch webhook,
-// a Google Apps Script web app, an Airtable automation, etc. Point it at
-// whatever currently turns Typeform rows into matches. Until this is set,
-// every submission is still saved in the browser under the
-// "roomie_quiz_submissions" localStorage key, so nothing gets lost.
+// CONFIG — webhookUrl points at this repo's own Vercel serverless function
+// (api/submit-quiz.js), which writes into Vercel KV. Swap in a different
+// endpoint here if matching ever moves off that. Until KV is connected in
+// the Vercel dashboard, submissions are still saved in the browser under
+// the "roomie_quiz_submissions" localStorage key, so nothing gets lost.
 // ---------------------------------------------------------------------------
 const QUIZ_CONFIG = {
-  webhookUrl: "",
+  webhookUrl: "/api/submit-quiz",
   // Same €3 pledge link as the "Back us" section on index.html (CONFIG.stripe[3]
   // in js/script.js) — update both if the Stripe link ever changes.
   backUsUrl: "https://buy.stripe.com/00wbJ05OxcpZ8BH2gQgQE00",

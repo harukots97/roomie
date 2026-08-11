@@ -10,12 +10,12 @@ import {
 } from "./quiz-shared.js";
 
 // ---------------------------------------------------------------------------
-// CONFIG — same shape as js/quiz.js. Drop the real matching webhook in here
-// once it exists; until then everything is saved to the shared
-// "roomie_quiz_submissions" localStorage key, distinguished by role.
+// CONFIG — same shape as js/quiz.js, pointed at the same api/submit-quiz.js
+// endpoint. Vercel KV stores both roles in the same list, distinguished by
+// the `role` field.
 // ---------------------------------------------------------------------------
 const QUIZ_CONFIG = {
-  webhookUrl: "",
+  webhookUrl: "/api/submit-quiz",
 };
 
 // ---------------------------------------------------------------------------
