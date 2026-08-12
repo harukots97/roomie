@@ -1,17 +1,22 @@
 // ---------------------------------------------------------------------------
 // Vercel serverless function. Receives one quiz submission (from either
-// quiz.js or quiz-provider.js) and appends it to a Vercel KV list.
+// quiz.js or quiz-provider.js) and appends it to a Redis list.
 //
 // Setup (one-time, in the Vercel dashboard for this project):
-//   1. Storage tab -> Create Database -> KV -> connect it to this project.
-//      That auto-injects KV_REST_API_URL and KV_REST_API_TOKEN as env vars,
-//      nothing to copy/paste by hand.
+//   1. Storage tab -> Browse Marketplace -> Upstash (for Redis) -> connect
+//      it to this project. That auto-injects UPSTASH_REDIS_REST_URL and
+//      UPSTASH_REDIS_REST_TOKEN as env vars, nothing to copy/paste by hand.
+//      (Vercel's own first-party "KV" product has been discontinued; Upstash
+//      via the Marketplace is the direct replacement and speaks the same
+//      Redis REST protocol, see api/_kv.js.)
 //   2. Redeploy so the function picks up the new env vars.
 // That's it — no npm install needed, this only uses the built-in fetch.
 //
 // To see stored submissions, use /api/list-submissions (see that file for
-// the one env var it needs).
+// the one extra env var it needs).
 // ---------------------------------------------------------------------------
+
+const { resolveRedisCredentials, redisCommand } = require("./_kv.js");
 
 const SUBMISSIONS_KEY = "quiz_submissions";
 const MAX_BODY_BYTES = 200_000; // generous; a submission is a few KB of JSON
@@ -22,9 +27,8 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { KV_REST_API_URL, KV_REST_API_TOKEN } = process.env;
-  if (!KV_REST_API_URL || !KV_REST_API_TOKEN) {
-    console.error("submit-quiz: KV_REST_API_URL/KV_REST_API_TOKEN not set — connect Vercel KV to this project.");
+  if (!resolveRedisCredentials()) {
+    console.error("submit-quiz: no Redis credentials found — connect Upstash for Redis to this project from the Storage tab.");
     return res.status(500).json({ error: "Storage not configured yet" });
   }
 
@@ -48,22 +52,10 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const kvRes = await fetch(KV_REST_API_URL, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${KV_REST_API_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(["LPUSH", SUBMISSIONS_KEY, entry]),
-    });
-    if (!kvRes.ok) {
-      const text = await kvRes.text();
-      console.error("submit-quiz: KV write failed", kvRes.status, text);
-      return res.status(502).json({ error: "Storage write failed" });
-    }
+    await redisCommand(["LPUSH", SUBMISSIONS_KEY, entry]);
   } catch (err) {
-    console.error("submit-quiz: KV request threw", err);
-    return res.status(502).json({ error: "Storage unreachable" });
+    console.error("submit-quiz: Redis write failed", err);
+    return res.status(502).json({ error: "Storage write failed" });
   }
 
   return res.status(200).json({ ok: true });
