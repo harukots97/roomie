@@ -266,12 +266,13 @@ export async function submitQuizResponse({ webhookUrl, role, answers, result }) 
   }
 
   try {
-    await fetch(webhookUrl, {
+    const res = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(record),
       keepalive: true,
     });
+    if (!res.ok) throw new Error(`Webhook responded ${res.status}`);
     return { ok: true, message: "You're on the list. We'll email you when we have matches." };
   } catch (err) {
     console.warn("Roomie quiz: could not reach the matching webhook, answers are saved locally.", err);
