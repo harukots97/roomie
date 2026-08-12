@@ -70,13 +70,13 @@ const PRACTICAL_SCREENS = [
     id: "p3", type: "question", section: "practical", autoAdvance: false,
     fields: [
       {
-        id: "roomType", type: "chips-single", question: "What kind of room are you after?",
+        id: "roomType", type: "chips-single", question: "What type of room or setup are you looking for?",
         options: [
+          { label: "Private room" },
           { label: "Private room, shared bathroom" },
           { label: "Private room, ensuite" },
-          { label: "Private room with kitchen access" },
-          { label: "Open to a studio" },
-          { label: "No preference" },
+          { label: "Open to a studio or independent unit" },
+          { label: "No strong preference" },
         ],
       },
       {
@@ -119,7 +119,10 @@ const PRACTICAL_SCREENS = [
       {
         id: "situation", type: "chips-single", question: "What's your situation right now?",
         options: [
-          { label: "Student" },
+          { label: "Bachelor's student" },
+          { label: "Master's student" },
+          { label: "PhD student" },
+          { label: "Other student (exchange, vocational, language course, etc.)" },
           { label: "Working professional" },
           { label: "Freelancer or self-employed" },
           { label: "Between jobs or relocating" },

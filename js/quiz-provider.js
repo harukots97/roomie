@@ -207,7 +207,15 @@ const LOOKING_FOR_SCREENS = [
       { id: "agePreference", type: "text", question: "Any age range in mind?", placeholder: "e.g. 22 to 30", optional: true },
       {
         id: "employmentPreference", type: "chips-single", question: "Any preference on their situation?",
-        options: [{ label: "Student" }, { label: "Working professional" }, { label: "Freelancer" }, { label: "No preference" }],
+        options: [
+          { label: "Bachelor's student" },
+          { label: "Master's student" },
+          { label: "PhD student" },
+          { label: "Other student (exchange, vocational, language course, etc.)" },
+          { label: "Working professional" },
+          { label: "Freelancer or self-employed" },
+          { label: "No preference" },
+        ],
       },
     ],
   },

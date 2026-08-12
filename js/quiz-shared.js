@@ -18,30 +18,30 @@ export function q1(id, section, question, options) {
 }
 
 export const BEHAVIORAL_SCREENS = [
-  q1("a1", "order", "The bathroom needs cleaning. When does that actually happen?", [
-    { label: "Same day, if it's dirty", points: 4 },
-    { label: "On a weekly schedule", points: 4 },
+  q1("a1", "order", "How often does the bathroom or toilet actually get cleaned by you?", [
+    { label: "Same day it looks dirty", points: 4 },
+    { label: "Set weekly schedule, rain or shine", points: 4 },
     { label: "Every 2 to 3 weeks", points: 2 },
-    { label: "When someone mentions it", points: 1 },
-    { label: "Someone else handles it", points: 0 },
+    { label: "Only when someone mentions it", points: 1 },
+    { label: "We hire a cleaner", points: 0 },
   ]),
-  q1("a2", "order", "Dishes after you eat. What's the real timeline?", [
-    { label: "Immediately", points: 4 },
-    { label: "Same day, a few hours later", points: 3 },
-    { label: "Can sit overnight", points: 2 },
-    { label: "A multi-day pile is normal", points: 0 },
+  q1("a2", "order", "Dishes after you cook or eat, when do they get washed?", [
+    { label: "Immediately, before I do anything else", points: 4 },
+    { label: "Same day, maybe a few hours later", points: 3 },
+    { label: "Can sit in the sink overnight", points: 2 },
+    { label: "A multi-day pile is pretty normal for me", points: 0 },
   ]),
-  q1("a3", "order", "Your bedroom, most days. Which one's closest?", [
-    { label: "Bed made, floor clear", points: 4 },
-    { label: "Lived-in, but no floor mess", points: 3 },
-    { label: "Some stuff around", points: 2 },
-    { label: "Organized chaos", points: 1 },
+  q1("a3", "order", "If a flatmate glances into your room with the door open, what do they see?", [
+    { label: "Bed made, surfaces clear", points: 4 },
+    { label: "Lived-in, but nothing on the floor", points: 3 },
+    { label: "Some clothes or stuff scattered around", points: 2 },
+    { label: "Organized chaos, only I know where anything is", points: 1 },
   ]),
-  q1("a4", "order", "You just finished cooking. What happens to the counters?", [
-    { label: "Wiped down every time", points: 4 },
-    { label: "Usually", points: 3 },
+  q1("a4", "order", "You just finished cooking. What happens to the counter?", [
+    { label: "Every time, it's basically automatic", points: 4 },
+    { label: "Usually, sometimes I forget", points: 3 },
     { label: "Only if it's really messy", points: 1 },
-    { label: "Not really my job", points: 0 },
+    { label: "Mostly unnecessary, only when doing a big clean", points: 0 },
   ]),
 
   q1("b1", "social", "How often do friends come over to your place?", [
