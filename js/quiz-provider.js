@@ -108,7 +108,8 @@ const APARTMENT_SCREENS = [
         options: [
           { label: "Washing machine" }, { label: "Dishwasher" }, { label: "Bike storage" },
           { label: "Parking" }, { label: "High-speed internet included" },
-          { label: "Communal outdoor space" }, { label: "Other" },
+          { label: "Communal outdoor space" },
+          { label: "Other", reveal: { placeholder: "What else is included?" } },
         ],
       },
     ],
@@ -155,7 +156,7 @@ const APARTMENT_PROGRESS_IDS = [
 const PHOTO_SCREEN = {
   id: "photos", type: "photo", section: "photos",
   heading: "Add some real photos.",
-  body: "Real photos get real matches. Send yours to <strong>@roomie.nl</strong> on Instagram along with your name or quiz confirmation number, and we'll add them to your listing.",
+  body: "Real photos get real matches. Send yours to <strong>@roomie.nl</strong> on Instagram along with your name and this confirmation number: <strong>{{code}}</strong>, and we'll add them to your listing.",
   ctaLabel: "Continue",
   progressPercent: 30,
   progressLabel: "Add your photos",
@@ -224,7 +225,10 @@ const LOOKING_FOR_SCREENS = [
     fields: [
       {
         id: "languageRequirement", type: "chips-multi", question: "Any language requirement?",
-        options: [{ label: "Dutch" }, { label: "English" }, { label: "Other" }, { label: "No requirement" }],
+        options: [
+          { label: "Dutch" }, { label: "English" }, { label: "No requirement" },
+          { label: "Other", reveal: { placeholder: "Which language?" } },
+        ],
       },
       {
         id: "dealbreakers", type: "textarea", question: "Any dealbreakers?",
@@ -258,11 +262,17 @@ const HOUSE_RULES_SCREENS = [
     fields: [
       {
         id: "billSplitting", type: "chips-single", question: "How are bills split?",
-        options: [{ label: "Equal split" }, { label: "Usage-based" }, { label: "Informal, case by case" }, { label: "Other" }],
+        options: [
+          { label: "Equal split" }, { label: "Usage-based" }, { label: "Informal, case by case" },
+          { label: "Other", reveal: { placeholder: "How do you split bills?" } },
+        ],
       },
       {
         id: "choreSystem", type: "chips-single", question: "How do chores get done?",
-        options: [{ label: "Rotating schedule" }, { label: "Everyone handles their own mess" }, { label: "Informal" }, { label: "Other" }],
+        options: [
+          { label: "Rotating schedule" }, { label: "Everyone handles their own mess" }, { label: "We hire a cleaner" },
+          { label: "Other", reveal: { placeholder: "How do chores get done?" } },
+        ],
       },
     ],
   },
@@ -351,6 +361,7 @@ createQuizApp({
     resultsContent: RESULTS,
     shareLabel: "Share your result",
     retakeLabel: "Retake the quiz",
+    showConfirmationCode: true,
     shareText: (content) => `My place matches with ${content.title} flatmates on Roomie's quiz. What kind of flatmate are you?`,
     extraHTML: () => `
       <div class="quiz-result-support">

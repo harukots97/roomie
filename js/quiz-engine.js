@@ -34,6 +34,10 @@ export function createQuizApp(config) {
     answers: {},
     result: null,
     submitStatus: null,
+    // Generated once per quiz attempt so a provider can quote it in an
+    // Instagram DM (see the photo step) before the quiz is even submitted,
+    // and so we can match that DM back to their record afterward.
+    confirmationCode: generateConfirmationCode(),
   };
 
   const shellEl = document.getElementById("quiz-shell");
@@ -42,6 +46,10 @@ export function createQuizApp(config) {
   const progressTrack = document.getElementById("quiz-progress-track");
   const progressFill = document.getElementById("quiz-progress-fill");
   const progressLabel = document.getElementById("quiz-progress-label");
+
+  function generateConfirmationCode() {
+    return Math.random().toString(36).slice(2, 8).toUpperCase();
+  }
 
   function currentScreen() {
     return screens[state.screenIndex];
@@ -68,6 +76,7 @@ export function createQuizApp(config) {
     state.answers = {};
     state.result = null;
     state.submitStatus = null;
+    state.confirmationCode = generateConfirmationCode();
     goTo(0, -1);
   }
 
@@ -150,11 +159,12 @@ export function createQuizApp(config) {
   }
 
   function buildPhotoHTML(screen) {
+    const body = (screen.body || "").replace(/\{\{code\}\}/g, state.confirmationCode);
     return `
       <span class="quiz-section-label">${sectionLabels[screen.section] || ""}</span>
       <p class="quiz-question">${screen.heading}</p>
       <div class="quiz-photo-block">
-        <p class="quiz-photo-text">${screen.body}</p>
+        <p class="quiz-photo-text">${body}</p>
       </div>
       <div class="quiz-footer">
         <button type="button" class="quiz-continue" data-action="continue">${screen.ctaLabel || "Continue"}</button>
@@ -425,6 +435,10 @@ export function createQuizApp(config) {
 
         <p class="quiz-result-status" id="quiz-result-status">${state.submitStatus || "Saving your answers…"}</p>
 
+        ${resultConfig.showConfirmationCode ? `
+          <p class="quiz-result-confirmation">Instagram confirmation number: <strong>${state.confirmationCode}</strong></p>
+        ` : ""}
+
         ${resultConfig.extraHTML ? resultConfig.extraHTML(result) : ""}
 
         <div class="quiz-result-actions">
@@ -586,6 +600,7 @@ export function createQuizApp(config) {
   function handleEmailSubmit(container) {
     const input = document.getElementById("quiz-email-input");
     state.answers.email = input.value.trim();
+    state.answers.confirmationCode = state.confirmationCode;
     state.result = computeResult(state.answers);
     next();
     onSubmit(state.answers, state.result).then((outcome) => {

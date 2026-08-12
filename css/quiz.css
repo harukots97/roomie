@@ -491,6 +491,15 @@ html {
   color: var(--color-stone);
 }
 
+.quiz-result-confirmation {
+  font-size: var(--text-body-sm);
+  color: var(--color-deep-ink);
+  background: var(--surface-white);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  margin-top: -4px;
+}
+
 .quiz-result-support {
   width: 100%;
   display: flex;
