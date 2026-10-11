@@ -7,6 +7,7 @@
 //   https://<your-domain>/api/list-submissions?token=<that same string>
 //
 // Optionally filter by role: ...&role=seeker or ...&role=provider
+// (recommended for CSV, since the two quizzes ask different questions).
 //
 // For a live Google Sheet, put this formula in cell A1 of a blank sheet:
 //   =IMPORTDATA("https://<your-domain>/api/list-submissions?token=<token>&format=csv")
@@ -14,38 +15,58 @@
 // cell -> "Refresh imported data" to force it sooner.
 // ---------------------------------------------------------------------------
 
+const crypto = require("crypto");
 const { resolveRedisCredentials, redisCommand } = require("./_kv.js");
 
 const SUBMISSIONS_KEY = "quiz_submissions";
 
-const CSV_COLUMNS = [
+const BASE_COLUMNS = [
   "submittedAt", "role", "email", "confirmationCode",
-  "resultType", "orderScore", "socialScore", "orderTier", "socialTier",
-  "answers",
+  "resultType", "orderScore", "socialScore", "orderTier", "socialTier", "traits",
 ];
 
 function csvField(value) {
-  const str = value === undefined || value === null ? "" : String(value);
-  return /[",\n]/.test(str) ? `"${str.replace(/"/g, '""')}"` : str;
+  let str = value === undefined || value === null ? "" : String(value);
+  // Stop spreadsheet apps from treating a typed-in answer as a formula.
+  if (/^[=+\-@\t\r]/.test(str)) str = "'" + str;
+  return /[",\n\r]/.test(str) ? `"${str.replace(/"/g, '""')}"` : str;
 }
 
+// One row per submission: the key fields first, then one column per quiz
+// question (from the readable `summary` each submission stores), then the
+// raw answers as JSON so nothing gets lost. Entries saved before the
+// redesign have no summary and keep their email/code inside `answers`.
 function toCsv(entries) {
+  const questionCols = [];
+  const seen = new Set();
+  entries.slice().reverse().forEach((e) => (e.summary || []).forEach((r) => {
+    if (!seen.has(r.id)) { seen.add(r.id); questionCols.push(r); }
+  }));
+
+  const header = [...BASE_COLUMNS, ...questionCols.map((q) => `${q.id}: ${q.question}`), "answers"];
   const rows = entries.map((e) => {
-    const row = {
+    const a = e.answers || {};
+    const r = e.result || {};
+    const byId = Object.fromEntries((e.summary || []).map((x) => [x.id, x.answer]));
+    const base = {
       submittedAt: e.submittedAt || e.receivedAt || "",
       role: e.role || "",
-      email: (e.answers && e.answers.email) || "",
-      confirmationCode: (e.answers && e.answers.confirmationCode) || "",
-      resultType: (e.result && e.result.type) || "",
-      orderScore: (e.result && e.result.orderScore) ?? "",
-      socialScore: (e.result && e.result.socialScore) ?? "",
-      orderTier: (e.result && e.result.orderTier) || "",
-      socialTier: (e.result && e.result.socialTier) || "",
-      answers: JSON.stringify(e.answers || {}),
+      email: e.email || a.email || "",
+      confirmationCode: e.confirmationCode || a.confirmationCode || "",
+      resultType: r.typeName || r.type || "",
+      orderScore: r.orderScore ?? "",
+      socialScore: r.socialScore ?? "",
+      orderTier: r.orderTier || "",
+      socialTier: r.socialTier || "",
+      traits: Array.isArray(r.traits) ? r.traits.join("; ") : "",
     };
-    return CSV_COLUMNS.map((col) => csvField(row[col])).join(",");
+    return [
+      ...BASE_COLUMNS.map((c) => base[c]),
+      ...questionCols.map((q) => byId[q.id]),
+      JSON.stringify(a),
+    ].map(csvField).join(",");
   });
-  return [CSV_COLUMNS.join(","), ...rows].join("\r\n");
+  return [header.map(csvField).join(","), ...rows].join("\r\n");
 }
 
 module.exports = async function handler(req, res) {
@@ -59,7 +80,9 @@ module.exports = async function handler(req, res) {
     console.error("list-submissions: ADMIN_TOKEN not set — add it in Vercel project settings.");
     return res.status(500).json({ error: "Admin access not configured yet" });
   }
-  if (req.query.token !== ADMIN_TOKEN) {
+  const given = Buffer.from(String(req.query.token || ""));
+  const expected = Buffer.from(ADMIN_TOKEN);
+  if (given.length !== expected.length || !crypto.timingSafeEqual(given, expected)) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 

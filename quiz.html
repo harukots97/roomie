@@ -1,39 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Roomie — What kind of flatmate are you?</title>
-<meta name="description" content="Answer a few honest questions and find out what kind of flatmate you actually are, then get matched." />
-<meta name="robots" content="noindex" />
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%234865ff'/%3E%3C/svg%3E">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/quiz.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roomie · Seeker quiz</title>
+<meta name="description" content="Answer a few honest questions, find out what kind of flatmate you are, and get matched with people who actually fit.">
+<meta name="theme-color" content="#FFFBFD">
+<link rel="icon" href="/assets/c191.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="/js/vendor/preact-htm.module.js">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/quiz.css">
 </head>
-<body class="quiz-body">
-
-<div class="quiz-shell" id="quiz-shell">
-  <div class="quiz-topbar">
-    <button type="button" class="quiz-icon-btn" id="quiz-back" aria-label="Previous question" hidden>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div class="quiz-progress-track" id="quiz-progress-track" hidden>
-      <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
-    </div>
-    <a href="index.html" class="quiz-icon-btn" id="quiz-close" aria-label="Exit quiz">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
-  <p class="quiz-progress-label" id="quiz-progress-label" hidden></p>
-
-  <main class="quiz-stage" id="quiz-stage"></main>
-</div>
-
-<script type="module" src="js/quiz.js"></script>
+<body>
+<div id="app"></div>
+<noscript><p style="padding:24px;font-size:17px">The quiz needs JavaScript to run. Please enable it, or email us at <a href="mailto:hello@roomie.app">hello@roomie.app</a>.</p></noscript>
+<script type="module">
+import { mountQuiz } from '/js/quiz-app.js';
+import { SEEKER } from '/js/quiz-data.js';
+mountQuiz(SEEKER, document.getElementById('app'));
+</script>
 </body>
 </html>

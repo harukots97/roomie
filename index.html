@@ -1,297 +1,188 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Roomie — Swipe right on your next flatmate</title>
-<meta name="description" content="Set your vibe and only match with flatmates who actually fit. Verified profiles, no ghosting, no guessing." />
-
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%234865ff'/%3E%3C/svg%3E">
-
-<!-- NOTE: og:image/twitter:image need an absolute URL once the domain is live
-     (e.g. https://roomie.com/assets/og-image.jpg) — social crawlers won't
-     reliably resolve the relative path below. Update after launch. -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Roomie — Swipe right on your next flatmate" />
-<meta property="og:description" content="Set your vibe and only match with flatmates who actually fit. Verified profiles, no ghosting, no guessing." />
-<meta property="og:image" content="assets/og-image.jpg" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Roomie — Swipe right on your next flatmate" />
-<meta name="twitter:description" content="Set your vibe and only match with flatmates who actually fit. Verified profiles, no ghosting, no guessing." />
-<meta name="twitter:image" content="assets/og-image.jpg" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roomie · Swipe right on your next flatmate</title>
+<meta name="description" content="Take a 3-minute quiz and get matched by hand with flatmates who actually fit how you live. Launching in the Netherlands.">
+<meta name="theme-color" content="#FFFBFD">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Roomie · Swipe right on your next flatmate">
+<meta property="og:description" content="Set your vibe and only match with people who actually fit. No endless chats, no surprises.">
+<meta property="og:image" content="/assets/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/c191.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/landing.css">
 </head>
 <body>
+<div class="page">
 
-<header class="site-header" id="top">
-  <div class="header-inner">
-    <a href="#top" class="logo">
-      <img src="assets/Roomie.svg" alt="Roomie" class="logo-img">
-    </a>
-
-    <nav class="nav-links" id="nav-links">
-      <a href="#problem">The problem</a>
-      <a href="#how-it-works">How it works</a>
-      <a href="#quirks">Preferences</a>
-      <a href="#support">Back us</a>
-      <a href="#roadmap">Roadmap</a>
-    </nav>
-
-    <div class="header-actions">
-      <a href="#get-started" class="btn btn-primary">Get started</a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<nav class="nav" aria-label="Main">
+  <div class="nav-in">
+    <a href="#top" class="nav-logo" aria-label="Roomie home"><img src="/assets/logo.svg" alt="Roomie" width="116" height="28"></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#how">How it works</a><a href="#match">Get matched</a><a href="#back">Back us</a><a href="#roadmap">Roadmap</a>
+      </div>
+      <a href="#match" class="nav-cta">Take the quiz</a>
     </div>
   </div>
+</nav>
+
+<header id="top" class="hero">
+  <h1>Swipe right on your next <span class="hero-word" id="hero-word" aria-live="off"><span>flatmate.</span></span></h1>
+  <p>Set your vibe. Night owl, early bird, dog lover, zero afterparties — and only match with people who actually fit. No endless chats, no surprises.</p>
+  <a href="#match" class="hero-cta">Start the quiz</a>
+  <img src="/assets/hero.jpg" alt="Three flatmates relaxing on a sofa with a cat" class="hero-img" width="1200" height="682" fetchpriority="high">
 </header>
 
-<main>
+<section id="how" class="how">
+  <h2 class="h2" data-reveal="0">Four steps from stranger to flatmate.</h2>
+  <div class="steps">
+    <div class="step" data-reveal="1"><div class="step-img"><img src="/assets/step1.jpg" alt="" width="800" height="1000" loading="lazy"></div><h3>Take a quiz</h3></div>
+    <div class="step" data-reveal="2"><div class="step-img"><img src="/assets/step2.jpg" alt="" width="800" height="1000" loading="lazy"></div><h3>Get your curated matches on email</h3></div>
+    <div class="step" data-reveal="3"><div class="step-img"><img src="/assets/step3.jpg" alt="" width="800" height="1000" loading="lazy"></div><h3>Start the conversation</h3></div>
+    <div class="step" data-reveal="4"><div class="step-img"><img src="/assets/step4.jpg" alt="" width="800" height="1000" loading="lazy"></div><h3>Meet your perfect roomie</h3></div>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-portraits" aria-hidden="true">
-      <div class="portrait-frame portrait-1" data-depth="18"><span class="portrait-inner"><img src="assets/portrait-1.jpg" alt="" loading="lazy"></span></div>
-      <div class="portrait-frame portrait-2" data-depth="26"><span class="portrait-inner"><img src="assets/portrait-2.jpg" alt="" loading="lazy"></span></div>
-      <div class="portrait-frame portrait-3" data-depth="14"><span class="portrait-inner"><img src="assets/portrait-3.jpg" alt="" loading="lazy"></span></div>
-      <div class="portrait-frame portrait-4" data-depth="20"><span class="portrait-inner"><img src="assets/portrait-4.jpg" alt="" loading="lazy"></span></div>
+<section id="match" class="match">
+  <div class="wrap">
+    <h2 class="h2">Which one are you?</h2>
+    <p class="match-sub">Take our 3-minute quiz and we'll match you by hand, using AI to find the best lifestyle fits from your answers.</p>
+    <div class="paths">
+      <a href="/quiz" class="path path-room" data-path="seeker">
+        <span class="path-title">I'm looking for a room</span>
+        <span class="path-pill">Start questionnaire →</span>
+        <img src="/assets/c176.svg" alt="">
+      </a>
+      <a href="/quiz-provider" class="path path-mate" data-path="provider">
+        <span class="path-title">I have a room, need a flatmate</span>
+        <span class="path-pill">Start questionnaire →</span>
+        <img src="/assets/c188.svg" alt="">
+      </a>
     </div>
+  </div>
+</section>
 
-    <div class="container hero-inner">
-      <span class="badge">Now testing demand · Phase 1</span>
-      <h1 class="hero-heading">Swipe right on your next flatmate.</h1>
-      <p class="hero-sub">Set your vibe. Night owl, early bird, dog lover, zero afterparties — and only match with people who actually fit. No endless chats, no surprises.</p>
-      <div class="hero-actions">
-        <a href="#get-started" class="btn btn-primary btn-lg">Find your match</a>
-        <a href="#how-it-works" class="btn btn-outline btn-lg">See how it works</a>
+<section id="back" class="back">
+  <div class="wrap">
+    <div class="back-panel" data-reveal="0">
+      <div>
+        <h2 class="h2">Help us build it without ads or investors breathing down our neck.</h2>
+        <p class="back-sub">Roomie is independent. A small donation covers servers and keeps matching free for everyone.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- THE PROBLEM -->
-  <section class="section" id="problem">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge badge-info">The problem we're solving</span>
-        <h2 class="section-heading">There's a better way to find a flatmate.</h2>
-        <p class="section-sub">Right now it means scattered posts, messages that go nowhere, and no way to tell who's really on the other end. Roomie brings everyone looking for a room or a flatmate into one place.</p>
-      </div>
-
-      <div class="tinted-grid">
-        <div class="tinted-card tinted-card--blossom">
-          <h3 class="tinted-card-title">Scattered everywhere</h3>
-          <p class="tinted-card-desc">Posts spread across group chats, Facebook and sketchy listing sites — with nowhere central to look.</p>
+      <div class="donate-card" id="donate-card">
+        <div class="amounts" role="group" aria-label="Donation amount">
+          <button type="button" class="amount" data-amount="3" aria-pressed="false">€3</button>
+          <button type="button" class="amount" data-amount="5" aria-pressed="true">€5</button>
+          <button type="button" class="amount" data-amount="10" aria-pressed="false">€10</button>
         </div>
-        <div class="tinted-card tinted-card--forest">
-          <h3 class="tinted-card-title">Ghosted messages</h3>
-          <p class="tinted-card-desc">Conversations that go nowhere, with zero accountability on either side.</p>
+        <div class="perks">
+          <div class="perks-title">Every supporter gets</div>
+          <ul class="dot-list">
+            <li>Test new features before anyone else</li>
+            <li>Your feedback gets read and acted on</li>
+            <li>1 month premium free when we launch</li>
+          </ul>
         </div>
-        <div class="tinted-card tinted-card--ember">
-          <h3 class="tinted-card-title">No way to verify</h3>
-          <p class="tinted-card-desc">No real way to know who you'd actually be living with, until it's too late.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="section" id="how-it-works">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge badge-info">How it works</span>
-        <h2 class="section-heading">Four steps to your perfect match.</h2>
-      </div>
-
-      <div class="steps-grid">
-        <div class="step-card">
-          <span class="step-number">01</span>
-          <h3 class="step-title">Take the lifestyle quiz or fill in with AI</h3>
-          <p class="step-desc">A few honest questions about how you actually live — not how you wish you did.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-number">02</span>
-          <h3 class="step-title">See your curated matches</h3>
-          <p class="step-desc">We surface people whose lifestyle genuinely fits yours. No random scrolling.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-number">03</span>
-          <h3 class="step-title">Start the conversation</h3>
-          <p class="step-desc">Chat safely in the app. Meet before you commit to anything.</p>
-        </div>
-        <div class="step-card">
-          <span class="step-number">04</span>
-          <h3 class="step-title">Move in with confidence</h3>
-          <p class="step-desc">You've already vetted the vibe. Now just sign the lease.</p>
-        </div>
+        <a href="#" class="btn btn-pink donate-btn" id="donate-btn">Donate €5</a>
+        <p class="donate-note">Secure payment via Stripe. Full refund if Roomie never launches, minus Stripe's processing fee. <a href="/legal#donations">Details</a></p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- QUIRKS -->
-  <section class="section" id="quirks">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-heading">Every habit. Every quirk.</h2>
-        <p class="section-sub">You set your preferences — we only show you to people who actually match them. Mutual filters only.</p>
-      </div>
-
-      <ul class="quirk-list">
-        <li class="quirk-pill">Night owl</li>
-        <li class="quirk-pill">Early bird</li>
-        <li class="quirk-pill">Music lover</li>
-        <li class="quirk-pill">Dog friendly</li>
-        <li class="quirk-pill">Coffee person</li>
-        <li class="quirk-pill">Gym rat</li>
-        <li class="quirk-pill">Bookworm</li>
-        <li class="quirk-pill">No parties</li>
-        <li class="quirk-pill">Social drinker</li>
-        <li class="quirk-pill">Gamer</li>
-        <li class="quirk-pill">Home chef</li>
-        <li class="quirk-pill">Social butterfly</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- GET STARTED -->
-  <section class="section" id="get-started">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-heading">Tell us who you are.</h2>
-        <p class="section-sub">The web platform isn't built yet. Take our 3-minute quiz and we'll match you by hand — using AI to find the best lifestyle fits from your answers. Human judgement, AI speed.</p>
-      </div>
-
-      <div class="cta-grid">
-        <a href="quiz-provider.html" class="cta-card">
-          <h3 class="cta-card-title">I have a flat that needs the right people.</h3>
-          <p class="cta-card-desc">You're the main renter and you know what kind of person you need living with you.</p>
-          <span class="cta-card-arrow" aria-hidden="true">→</span>
-        </a>
-        <a href="quiz.html" class="cta-card">
-          <h3 class="cta-card-title">I'm ready to find my new home.</h3>
-          <p class="cta-card-desc">You know what kind of place you want — and who you want to share it with.</p>
-          <span class="cta-card-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- BACK US -->
-  <section class="section pledge-section" id="support">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-heading">Back us. Get in first.</h2>
-        <p class="section-sub">A small pledge gets you early access, first feedback slot, and one month premium free — no charge until we're ready.</p>
-      </div>
-
-      <fieldset class="pledge-grid">
-        <legend class="sr-only">Choose a pledge amount</legend>
-
-        <label class="pledge-card" for="pledge-3">
-          <input type="radio" class="pledge-radio" name="pledge-tier" id="pledge-3" value="3" data-tier="Supporter">
-          <span class="pledge-amount">€3</span>
-          <span class="pledge-tier-name">Supporter</span>
-          <span class="pledge-desc">A small gesture that means a lot to us.</span>
-        </label>
-
-        <label class="pledge-card pledge-card--popular" for="pledge-5">
-          <span class="badge badge-primary pledge-popular-badge">Popular</span>
-          <input type="radio" class="pledge-radio" name="pledge-tier" id="pledge-5" value="5" data-tier="Backer" checked>
-          <span class="pledge-amount">€5</span>
-          <span class="pledge-tier-name">Backer</span>
-          <span class="pledge-desc">You want in early and want to help shape it.</span>
-        </label>
-
-        <label class="pledge-card" for="pledge-10">
-          <input type="radio" class="pledge-radio" name="pledge-tier" id="pledge-10" value="10" data-tier="Champion">
-          <span class="pledge-amount">€10</span>
-          <span class="pledge-tier-name">Champion</span>
-          <span class="pledge-desc">All-in. You will help define what Roomie becomes.</span>
-        </label>
-      </fieldset>
-
-      <div class="pledge-benefits">
-        <p class="pledge-benefits-title">Every supporter gets</p>
-        <ul class="pledge-benefits-list">
-          <li>Test new features before anyone else</li>
-          <li>Your feedback gets read and acted on</li>
-          <li>1 month premium free when we launch</li>
+<section id="roadmap" class="roadmap">
+  <div class="wrap">
+    <h2 class="h2" data-reveal="0">Where we're headed.</h2>
+    <div class="phases">
+      <div class="phase active" data-reveal="1">
+        <span class="phase-tag"><span class="ping"></span>Phase 1 · Active</span>
+        <h3>Testing the demand</h3>
+        <p>We validate that people actually want this before building. Every match is done by hand, enhanced with AI to surface the best lifestyle fits from form data.</p>
+        <ul class="dot-list">
+          <li>AI-enhanced manual matching</li>
+          <li>Form-based applications</li>
+          <li>Human review of every match</li>
+          <li>Direct founder communication</li>
         </ul>
       </div>
-
-      <div class="pledge-cta">
-        <a href="https://buy.stripe.com/cNi6oGfp74Xxg495t2gQE01" id="pledge-submit" class="btn btn-primary btn-lg" data-stripe="5" target="_blank" rel="noopener">Pay €5 as a Backer</a>
-        <p class="pledge-fineprint">Secure payment via Stripe. Full refund if Roomie never launches — minus Stripe's processing fee.</p>
+      <div class="phase" data-reveal="2">
+        <span class="phase-tag">Phase 2 · Up next</span>
+        <h3>Building the web platform</h3>
+        <p>Once demand is proven, we build a full-featured web platform. Self-service flows, real-time matching, and a polished experience for both flat owners and seekers.</p>
+        <ul class="dot-list">
+          <li>Full-featured web platform</li>
+          <li>Automated lifestyle matching</li>
+          <li>In-platform messaging</li>
+          <li>Profile verification basics</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal="3">
+        <span class="phase-tag">Phase 3 · Future</span>
+        <h3>The full platform</h3>
+        <p>Roomie becomes the complete flatmate life layer — from finding someone to living with them safely and smoothly.</p>
+        <ul class="dot-list">
+          <li>Identity &amp; ID verification</li>
+          <li>Secure document signing</li>
+          <li>Anti-fraud protection</li>
+          <li>Roomie life management tools</li>
+        </ul>
       </div>
     </div>
-  </section>
-
-  <!-- ROADMAP -->
-  <section class="section" id="roadmap">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge badge-info">Where we are headed</span>
-        <h2 class="section-heading">The roadmap.</h2>
-      </div>
-
-      <div class="roadmap-grid">
-        <div class="roadmap-card">
-          <span class="badge badge-primary">Phase 1 · Active</span>
-          <h3 class="roadmap-title">Testing the demand</h3>
-          <p class="roadmap-desc">We validate that people actually want this before building. Every match is done by hand, enhanced with AI to surface the best lifestyle fits from form data.</p>
-          <ul class="check-list">
-            <li>AI-enhanced manual matching</li>
-            <li>Form-based applications</li>
-            <li>Human review of every match</li>
-            <li>Direct founder communication</li>
-          </ul>
-        </div>
-
-        <div class="roadmap-card">
-          <span class="badge badge-info">Phase 2 · Up next</span>
-          <h3 class="roadmap-title">Building the web platform</h3>
-          <p class="roadmap-desc">Once demand is proven, we build a full-featured web platform. Self-service flows, real-time matching, and a polished experience for both flat owners and seekers.</p>
-          <ul class="check-list">
-            <li>Full-featured web platform</li>
-            <li>Automated lifestyle matching</li>
-            <li>In-platform messaging</li>
-            <li>Profile verification basics</li>
-          </ul>
-        </div>
-
-        <div class="roadmap-card">
-          <span class="badge badge-info">Phase 3 · Future</span>
-          <h3 class="roadmap-title">The full platform</h3>
-          <p class="roadmap-desc">Roomie becomes the complete flatmate life layer — from finding someone to living with them safely and smoothly.</p>
-          <ul class="check-list">
-            <li>Identity &amp; ID verification</li>
-            <li>Secure document signing</li>
-            <li>Anti-fraud protection</li>
-            <li>Roomie life management tools</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <a href="#top" class="logo">
-      <img src="assets/Roomie.svg" alt="Roomie" class="logo-img">
-    </a>
-    <p class="footer-copy">© 2026 Roomie. Finding your people, made simple.</p>
   </div>
-  <div class="footer-legal-row">
-    <p class="footer-legal">Roomie · KVK: 42108855 · VAT/BTW: NL005499969B34</p>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand"><img src="/assets/logo.svg" alt="Roomie" width="91" height="22"><span>© 2026</span></div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/roomie.nl/" target="_blank" rel="noopener">Instagram</a>
+      <!-- TODO: add the TikTok profile URL, then uncomment.
+      <a href="https://www.tiktok.com/@..." target="_blank" rel="noopener">TikTok</a> -->
+      <a href="mailto:hello@roomie.app">hello@roomie.app</a>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <a href="/legal#privacy">Privacy policy</a>
+    <a href="/legal#terms">Terms &amp; conditions</a>
+    <a href="/legal#cookies">Cookie policy</a>
+    <a href="/legal#donations">Donations &amp; refunds</a>
+    <a href="/legal#imprint">Imprint</a>
+    <button type="button" id="cookie-settings">Cookie settings</button>
   </div>
 </footer>
 
-<script src="js/script.js"></script>
+<div class="cookie" id="cookie" role="dialog" aria-label="Cookie preferences" hidden>
+  <div class="cookie-card">
+    <h3>Cookies, quickly</h3>
+    <p>We use essential cookies to make the site work. With your OK, we'd also use analytics to see what's working. Read our <a href="/legal#cookies">cookie policy</a>.</p>
+    <div class="cookie-cats" id="cookie-cats" hidden>
+      <button type="button" class="cookie-cat is-on" disabled aria-pressed="true">
+        <span class="cookie-cat-text"><b>Essential</b><small>Needed for the site and quiz to work. Always on.</small></span>
+        <span class="switch"></span>
+      </button>
+      <button type="button" class="cookie-cat" data-cat="analytics" aria-pressed="false">
+        <span class="cookie-cat-text"><b>Analytics</b><small>Anonymous stats on how people use Roomie.</small></span>
+        <span class="switch"></span>
+      </button>
+      <button type="button" class="cookie-cat" data-cat="marketing" aria-pressed="false">
+        <span class="cookie-cat-text"><b>Marketing</b><small>Helps us measure our ads and campaigns.</small></span>
+        <span class="switch"></span>
+      </button>
+    </div>
+    <div class="cookie-btns">
+      <button type="button" class="cookie-btn outline" id="cookie-reject">Essential only</button>
+      <button type="button" class="cookie-btn solid" id="cookie-accept">Accept all</button>
+    </div>
+    <button type="button" class="cookie-link" id="cookie-secondary">Choose what to allow</button>
+  </div>
+</div>
+
+</div>
+<script type="module" src="/js/landing.js"></script>
 </body>
 </html>
