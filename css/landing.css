@@ -31,11 +31,11 @@ a:hover{color:var(--pink)}
 
 /* How it works ----------------------------------------------------------- */
 .how{max-width:1160px;margin:0 auto;padding:64px 20px;scroll-margin-top:64px}
-.steps{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:16px;margin:32px -20px 0;padding:0 20px 8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.steps{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:16px;margin:32px -20px 0;padding:0 20px 8px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;scrollbar-width:none}
 .steps::-webkit-scrollbar{display:none}
-.step{display:flex;flex-direction:column;gap:16px;scroll-snap-align:start}
+.step{display:flex;flex-direction:column;gap:16px;scroll-snap-align:start;min-width:0}
 .step-img{border-radius:24px;overflow:hidden;transition:transform .35s var(--bouncy)}
-.step-img img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .5s}
+.step-img img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .5s}
 .step:nth-child(odd):hover .step-img{transform:translateY(-8px) rotate(-1.5deg)}
 .step:nth-child(even):hover .step-img{transform:translateY(-8px) rotate(1.5deg)}
 .step:hover .step-img img{transform:scale(1.06)}
