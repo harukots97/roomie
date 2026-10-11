@@ -31,7 +31,7 @@ a:hover{color:var(--pink)}
 
 /* How it works ----------------------------------------------------------- */
 .how{max-width:1160px;margin:0 auto;padding:64px 20px;scroll-margin-top:64px}
-.steps{display:grid;grid-template-columns:1fr;gap:32px;margin-top:32px}
+.steps{display:grid;grid-template-columns:1fr;gap:16px;margin-top:32px}
 @media (min-width:600px){.steps{grid-template-columns:repeat(2,1fr);gap:24px 16px}}
 @media (min-width:960px){.steps{grid-template-columns:repeat(4,1fr);gap:16px}}
 .step{display:flex;flex-direction:column;gap:16px;min-width:0}
@@ -41,6 +41,12 @@ a:hover{color:var(--pink)}
 .step:nth-child(even):hover .step-img{transform:translateY(-8px) rotate(1.5deg)}
 .step:hover .step-img img{transform:scale(1.06)}
 .step h3{margin:0;font-size:22px;letter-spacing:-.02em;font-weight:800;line-height:1.15;text-wrap:balance}
+/* Phones: compact rows, image on the left and title beside it. */
+@media (max-width:599px){
+  .step{flex-direction:row;align-items:center;gap:18px}
+  .step-img{width:42%;max-width:180px;flex-shrink:0;border-radius:20px}
+  .step h3{font-size:20px}
+}
 
 /* Get matched ------------------------------------------------------------ */
 .match{scroll-margin-top:64px;background:var(--ink);color:#fff;padding:72px 20px;border-radius:40px 40px 0 0}
