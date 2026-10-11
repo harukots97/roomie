@@ -41,11 +41,12 @@ a:hover{color:var(--pink)}
 .step:nth-child(even):hover .step-img{transform:translateY(-8px) rotate(1.5deg)}
 .step:hover .step-img img{transform:scale(1.06)}
 .step h3{margin:0;font-size:22px;letter-spacing:-.02em;font-weight:800;line-height:1.15;text-wrap:balance}
-/* Phones: compact rows, image on the left and title beside it. */
+/* Phones: two smaller tiles per row, title under each image. */
 @media (max-width:599px){
-  .step{flex-direction:row;align-items:center;gap:18px}
-  .step-img{width:42%;max-width:180px;flex-shrink:0;border-radius:20px}
-  .step h3{font-size:20px}
+  .steps{grid-template-columns:repeat(2,1fr);gap:24px 12px}
+  .step{gap:10px}
+  .step-img{border-radius:18px}
+  .step h3{font-size:16px;line-height:1.2}
 }
 
 /* Get matched ------------------------------------------------------------ */
