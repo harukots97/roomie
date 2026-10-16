@@ -83,6 +83,7 @@ Fill in whichever tools you use in `js/config.js`:
 | `analytics.vercel: true` | Vercel Web Analytics | Enable Analytics in the Vercel project first |
 | `analytics.plausibleDomain` | Plausible | Your site domain as added in Plausible |
 | `analytics.ga4Id` | Google Analytics 4 | The `G-…` measurement ID |
+| `analytics.amplitude.apiKey` | Amplitude | The project API key. Set `serverZone` to the org's region (`EU` or `US`). Session replay is on, with every typed input masked. |
 | `marketing.metaPixelId` | Meta Pixel | The pixel ID |
 
 None of these scripts load until the visitor allows that category in the cookie banner. That's a GDPR requirement in the design. Every tool gets these events:

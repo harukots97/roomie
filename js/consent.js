@@ -12,6 +12,12 @@ import { CONFIG } from './config.js';
 const KEY = 'roomie-consent';
 const loaded = { analytics: false, marketing: false };
 
+// Amplitude's library loads async; events tracked before it's ready wait here.
+const AMP_SDK = 'analytics-browser-2.47.5-min.js.gz';
+const AMP_REPLAY = 'plugin-session-replay-browser-1.36.3-min.js.gz';
+let ampReady = false;
+const ampQueue = [];
+
 export function getConsent() {
   try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; }
 }
@@ -28,6 +34,28 @@ function addScript(src, attrs = {}) {
   s.async = true; s.src = src;
   Object.entries(attrs).forEach(([k, v]) => s.setAttribute(k, v));
   document.head.appendChild(s);
+  return new Promise((resolve, reject) => { s.onload = resolve; s.onerror = reject; });
+}
+
+async function loadAmplitude({ apiKey, serverZone, sessionReplay }) {
+  const cdn = serverZone === 'EU' ? 'https://cdn.eu.amplitude.com/libs/' : 'https://cdn.amplitude.com/libs/';
+  try {
+    await addScript(cdn + AMP_SDK);
+    if (sessionReplay) {
+      await addScript(cdn + AMP_REPLAY);
+      // 'medium' masks the text of every input, so emails and answers typed
+      // into fields never appear in recordings.
+      window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1, privacyConfig: { defaultMaskLevel: 'medium' } }));
+    }
+    window.amplitude.init(apiKey, {
+      serverZone,
+      autocapture: { pageViews: true, sessions: true, attribution: true, elementInteractions: true, formInteractions: false, fileDownloads: false }
+    });
+    ampReady = true;
+    ampQueue.splice(0).forEach(([n, p]) => window.amplitude.track(n, p));
+  } catch (err) {
+    console.warn('Roomie: Amplitude failed to load (often an ad blocker).', err);
+  }
 }
 
 function loadAnalytics() {
@@ -36,19 +64,20 @@ function loadAnalytics() {
   const a = CONFIG.analytics;
   if (a.vercel) {
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    addScript('/_vercel/insights/script.js', { defer: '' });
+    addScript('/_vercel/insights/script.js', { defer: '' }).catch(() => {});
   }
   if (a.plausibleDomain) {
     window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };
-    addScript('https://plausible.io/js/script.js', { defer: '', 'data-domain': a.plausibleDomain });
+    addScript('https://plausible.io/js/script.js', { defer: '', 'data-domain': a.plausibleDomain }).catch(() => {});
   }
   if (a.ga4Id) {
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
     window.gtag('config', a.ga4Id, { anonymize_ip: true });
-    addScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(a.ga4Id));
+    addScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(a.ga4Id)).catch(() => {});
   }
+  if (a.amplitude && a.amplitude.apiKey) loadAmplitude(a.amplitude);
 }
 
 function loadMarketing() {
@@ -58,7 +87,7 @@ function loadMarketing() {
   if (id) {
     const f = window.fbq = function () { f.callMethod ? f.callMethod.apply(f, arguments) : f.queue.push(arguments); };
     f.push = f; f.loaded = true; f.version = '2.0'; f.queue = [];
-    addScript('https://connect.facebook.net/en_US/fbevents.js');
+    addScript('https://connect.facebook.net/en_US/fbevents.js').catch(() => {});
     window.fbq('init', id);
     window.fbq('track', 'PageView');
   }
@@ -78,6 +107,9 @@ export function track(name, props = {}) {
     if (window.va) window.va('event', { name, data: props });
     if (window.plausible && CONFIG.analytics.plausibleDomain) window.plausible(name, { props });
     if (window.gtag && CONFIG.analytics.ga4Id) window.gtag('event', name, props);
+    if (CONFIG.analytics.amplitude && CONFIG.analytics.amplitude.apiKey) {
+      if (ampReady) window.amplitude.track(name, props); else ampQueue.push([name, props]);
+    }
   }
   if (loaded.marketing && window.fbq) {
     if (name === 'quiz_complete') window.fbq('track', 'CompleteRegistration', { content_name: props.role });

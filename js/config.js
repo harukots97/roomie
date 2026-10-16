@@ -20,7 +20,15 @@ export const CONFIG = {
   analytics: {
     vercel: true,           // Vercel Web Analytics (enabled in the Vercel project)
     plausibleDomain: '',    // e.g. 'roomie.nl'
-    ga4Id: ''               // e.g. 'G-XXXXXXXXXX'
+    ga4Id: '',              // e.g. 'G-XXXXXXXXXX'
+    // Amplitude: funnels, paths and session replay. Paste the project's API
+    // key (Settings → Projects → your project). serverZone must match the
+    // region the Amplitude org was created in ('EU' or 'US').
+    amplitude: {
+      apiKey: '',
+      serverZone: 'EU',
+      sessionReplay: true   // records visits with every typed input masked
+    }
   },
 
   // Marketing pixels. Only load after the visitor allows "Marketing".
