@@ -18,7 +18,7 @@ export const CONFIG = {
   // Analytics. Nothing here loads until the visitor allows "Analytics" in
   // the cookie banner. Fill in whichever you use and leave the rest empty.
   analytics: {
-    vercel: false,          // true after enabling Web Analytics in the Vercel project
+    vercel: true,           // Vercel Web Analytics (enabled in the Vercel project)
     plausibleDomain: '',    // e.g. 'roomie.nl'
     ga4Id: ''               // e.g. 'G-XXXXXXXXXX'
   },
