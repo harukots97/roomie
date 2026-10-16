@@ -9,12 +9,14 @@ index.html            landing page
 quiz.html             seeker quiz        → /quiz
 quiz-provider.html    provider quiz      → /quiz-provider
 legal.html            legal pages        → /legal
+admin.html            private responses viewer → /admin
 css/                  base.css (tokens, shared bits) + one file per page
 js/config.js          ← public settings: Stripe links, analytics IDs
 js/consent.js         cookie consent + consent-gated analytics, track()
 js/landing.js         landing page behaviour
 js/quiz-data.js       quiz questions, result types, scoring
 js/quiz-app.js        quiz UI (Preact + htm, vendored in js/vendor)
+js/admin.js           responses viewer
 api/submit-quiz.js    saves a quiz submission, sends confirmation email
 api/list-submissions.js  admin export (JSON or CSV)
 ```
@@ -39,7 +41,16 @@ Use `vercel dev` instead if you also want the `/api` functions and clean URLs (`
 
 Each submission is stored with a confirmation number (`RM-XXXXXX`), the email, the flatmate type and scores, a readable question/answer list, and the raw answers.
 
-To read submissions:
+To read submissions, open **`https://<domain>/admin`** and enter the `ADMIN_TOKEN`. You get:
+
+- totals for seekers, providers and the last 7 days;
+- one card per response with the key facts, a seeker/provider filter, and a search across emails, confirmation numbers and every answer;
+- the full question-and-answer list, scores and traits when you open a card, plus Email and Copy email buttons;
+- a Download CSV button.
+
+The page isn't linked anywhere and isn't indexed by search engines. Without the token it shows nothing.
+
+Other ways to read them:
 
 - JSON: `https://<domain>/api/list-submissions?token=<ADMIN_TOKEN>`
 - CSV, one column per question: `...&format=csv&role=seeker` (or `role=provider`)

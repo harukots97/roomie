@@ -6,6 +6,8 @@
 // string you make up) to this project, then redeploy. To view submissions:
 //   https://<your-domain>/api/list-submissions?token=<that same string>
 //
+// For a readable view in the browser, open https://<your-domain>/admin.
+//
 // Optionally filter by role: ...&role=seeker or ...&role=provider
 // (recommended for CSV, since the two quizzes ask different questions).
 //
@@ -80,7 +82,10 @@ module.exports = async function handler(req, res) {
     console.error("list-submissions: ADMIN_TOKEN not set — add it in Vercel project settings.");
     return res.status(500).json({ error: "Admin access not configured yet" });
   }
-  const given = Buffer.from(String(req.query.token || ""));
+  // The /admin page sends the token as a Bearer header; Google Sheets'
+  // IMPORTDATA can only use the ?token= query parameter.
+  const bearer = String(req.headers.authorization || "").replace(/^Bearer\s+/i, "");
+  const given = Buffer.from(bearer || String(req.query.token || ""));
   const expected = Buffer.from(ADMIN_TOKEN);
   if (given.length !== expected.length || !crypto.timingSafeEqual(given, expected)) {
     return res.status(401).json({ error: "Unauthorized" });
