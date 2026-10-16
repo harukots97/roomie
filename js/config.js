@@ -25,8 +25,8 @@ export const CONFIG = {
     // key (Settings → Projects → your project). serverZone must match the
     // region the Amplitude org was created in ('EU' or 'US').
     amplitude: {
-      apiKey: '',
-      serverZone: 'EU',
+      apiKey: '022989b32357a7f7c1f87efd6ee58f14',
+      serverZone: 'US',
       sessionReplay: true   // records visits with every typed input masked
     }
   },
