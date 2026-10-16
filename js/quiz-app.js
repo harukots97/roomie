@@ -7,7 +7,7 @@
 
 import { html, render, useState, useEffect, useRef } from './vendor/preact-htm.module.js';
 import { CONFIG } from './config.js';
-import { track } from './consent.js';
+import { track, identifySubmission } from './consent.js';
 import { burstItems } from './burst.js';
 import { COLS, TYPES, SUCCESS_IMG, computeResult, summarize } from './quiz-data.js';
 
@@ -118,6 +118,7 @@ function App({ quiz }) {
       setReceipt({ code: data.confirmationCode, emailed: !!data.emailSent });
       setStage('success');
       setBurstKey(k => k + 1);
+      identifySubmission(data.confirmationCode, { role: quiz.role, flatmate_type: TYPES[r.key].name });
       track('quiz_complete', { role: quiz.role, type: r.key });
     } catch (err) {
       console.error('Roomie: quiz submission failed', err);

@@ -106,10 +106,10 @@ function Meter({ label, score, tier, color }) {
 
 function Card({ s, open, onToggle }) {
   const facts = (KEY_FACTS[s.role] || []).map(id => s.summary.find(r => r.id === id)).filter(r => r && r.answer);
-  const [copied, setCopied] = useState(false);
-  const copy = async e => {
+  const [copied, setCopied] = useState('');
+  const copy = (what, text) => async e => {
     e.stopPropagation();
-    try { await navigator.clipboard.writeText(s.email); setCopied(true); setTimeout(() => setCopied(false), 1200); } catch (err) {}
+    try { await navigator.clipboard.writeText(text); setCopied(what); setTimeout(() => setCopied(''), 1200); } catch (err) {}
   };
   return html`<article class=${'card' + (open ? ' open' : '')}>
     <button class="card-head" aria-expanded=${open} onClick=${onToggle}>
@@ -133,7 +133,8 @@ function Card({ s, open, onToggle }) {
         ${s.traits.length > 0 && html`<ul class="traits">${s.traits.map(t => html`<li>${t}</li>`)}</ul>`}
         <div class="actions">
           ${s.email && html`<a class="act" href=${'mailto:' + s.email + '?subject=' + encodeURIComponent('Your Roomie match' + (s.code ? ' (' + s.code + ')' : ''))}>Email</a>`}
-          ${s.email && html`<button class="act" onClick=${copy}>${copied ? 'Copied' : 'Copy email'}</button>`}
+          ${s.email && html`<button class="act" onClick=${copy('email', s.email)}>${copied === 'email' ? 'Copied' : 'Copy email'}</button>`}
+          ${s.code && html`<button class="act" title="Paste into Amplitude's user search to see this person's events and session replay" onClick=${copy('code', s.code)}>${copied === 'code' ? 'Copied' : 'Copy code'}</button>`}
         </div>
       </div>
       ${s.summary.length > 0

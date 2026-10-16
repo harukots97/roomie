@@ -12,7 +12,7 @@ import { CONFIG } from './config.js';
 const KEY = 'roomie-consent';
 const loaded = { analytics: false, marketing: false };
 
-// Amplitude's library loads async; events tracked before it's ready wait here.
+// Amplitude's library loads async; calls made before it's ready wait here.
 const AMP_SDK = 'analytics-browser-2.47.5-min.js.gz';
 const AMP_REPLAY = 'plugin-session-replay-browser-1.36.3-min.js.gz';
 let ampReady = false;
@@ -52,7 +52,7 @@ async function loadAmplitude({ apiKey, serverZone, sessionReplay }) {
       autocapture: { pageViews: true, sessions: true, attribution: true, elementInteractions: true, formInteractions: false, fileDownloads: false }
     });
     ampReady = true;
-    ampQueue.splice(0).forEach(([n, p]) => window.amplitude.track(n, p));
+    ampQueue.splice(0).forEach(fn => fn());
   } catch (err) {
     console.warn('Roomie: Amplitude failed to load (often an ad blocker).', err);
   }
@@ -107,14 +107,30 @@ export function track(name, props = {}) {
     if (window.va) window.va('event', { name, data: props });
     if (window.plausible && CONFIG.analytics.plausibleDomain) window.plausible(name, { props });
     if (window.gtag && CONFIG.analytics.ga4Id) window.gtag('event', name, props);
-    if (CONFIG.analytics.amplitude && CONFIG.analytics.amplitude.apiKey) {
-      if (ampReady) window.amplitude.track(name, props); else ampQueue.push([name, props]);
-    }
+    amp(() => window.amplitude.track(name, props));
   }
   if (loaded.marketing && window.fbq) {
     if (name === 'quiz_complete') window.fbq('track', 'CompleteRegistration', { content_name: props.role });
     if (name === 'donate_success') window.fbq('track', 'Donate', { currency: 'EUR', value: props.amount || 0 });
   }
+}
+
+// Tie this visitor's Amplitude history (events, session replay) to their quiz
+// submission, so a response in /admin can be looked up in Amplitude by its
+// confirmation number. Only the code and non-personal traits are sent.
+export function identifySubmission(code, traits = {}) {
+  if (!loaded.analytics || !code) return;
+  amp(() => {
+    window.amplitude.setUserId(code);
+    const id = new window.amplitude.Identify();
+    Object.entries(traits).forEach(([k, v]) => id.set(k, v));
+    window.amplitude.identify(id);
+  });
+}
+
+function amp(fn) {
+  if (!CONFIG.analytics.amplitude || !CONFIG.analytics.amplitude.apiKey) return;
+  if (ampReady) fn(); else ampQueue.push(fn);
 }
 
 applyConsent();
