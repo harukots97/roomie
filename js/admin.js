@@ -60,7 +60,7 @@ function normalise(e, i) {
 
 async function fetchAll(token) {
   const res = await fetch(API, { headers: { Authorization: 'Bearer ' + token }, cache: 'no-store' });
-  if (res.status === 401) throw Object.assign(new Error("That token didn't work. It must match ADMIN_TOKEN in Vercel exactly, and the variable must be enabled for Production."), { auth: true });
+  if (res.status === 401) throw Object.assign(new Error("That token didn't work. It must match ADMIN_TOKEN or ANALYTICS_TOKEN in Vercel exactly, and the variable must be enabled for Production."), { auth: true });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Could not load responses (' + res.status + ').');
   return (data.submissions || []).map(normalise);
@@ -85,7 +85,7 @@ function Login({ onToken, error }) {
   return html`<main class="login">
     <img src="/assets/logo.svg" alt="Roomie" class="login-logo" />
     <h1>Quiz responses</h1>
-    <p>Enter the admin token. It's the <code>ADMIN_TOKEN</code> value in your Vercel project settings.</p>
+    <p>Enter the token you saved in Vercel as <code>ANALYTICS_TOKEN</code> (or <code>ADMIN_TOKEN</code>).</p>
     <form onSubmit=${submit}>
       <label class="sr-only" for="tok">Admin token</label>
       <input id="tok" type="password" autocomplete="current-password" placeholder="Admin token" value=${t} onInput=${e => setT(e.target.value)} />

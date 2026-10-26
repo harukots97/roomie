@@ -36,7 +36,7 @@ Use `vercel dev` instead if you also want the `/api` functions and clean URLs (`
 ### 1. Database for quiz answers (Upstash Redis)
 
 1. In Vercel, open the project, then **Storage → Browse Marketplace → Upstash for Redis**. Create a database and connect it to this project. That adds `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` for you.
-2. Under **Settings → Environment Variables**, add `ADMIN_TOKEN` and set it to a long random string.
+2. Under **Settings → Environment Variables**, add `ANALYTICS_TOKEN` (or `ADMIN_TOKEN`) and set it to a long random string. This is the password for `/admin`.
 3. Redeploy.
 
 Each submission is stored with a confirmation number (`RM-XXXXXX`), the email, the flatmate type and scores, a readable question/answer list, and the raw answers.

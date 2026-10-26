@@ -2,7 +2,8 @@
 // Vercel serverless function. Returns every stored quiz submission as JSON
 // (default) or CSV (?format=csv), for reading in a spreadsheet.
 //
-// Setup: in the Vercel dashboard, add an env var ADMIN_TOKEN (any random
+// Setup: in the Vercel dashboard, add an env var ADMIN_TOKEN or
+// ANALYTICS_TOKEN (any random
 // string you make up) to this project, then redeploy. To view submissions:
 //   https://<your-domain>/api/list-submissions?token=<that same string>
 //
@@ -77,19 +78,24 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  // Trim so a space or newline pasted into the Vercel dashboard doesn't
-  // silently break sign-in.
-  const ADMIN_TOKEN = (process.env.ADMIN_TOKEN || "").trim();
-  if (!ADMIN_TOKEN) {
-    console.error("list-submissions: ADMIN_TOKEN not set — add it in Vercel project settings.");
+  // Any of these env vars can hold the admin password. Trim so a space or
+  // newline pasted into the Vercel dashboard doesn't silently break sign-in.
+  const tokens = ["ADMIN_TOKEN", "ANALYTICS_TOKEN", "ANALYTICS"]
+    .map((k) => (process.env[k] || "").trim())
+    .filter(Boolean);
+  if (!tokens.length) {
+    console.error("list-submissions: no ADMIN_TOKEN or ANALYTICS_TOKEN set — add one in Vercel project settings.");
     return res.status(500).json({ error: "Admin access not configured yet" });
   }
   // The /admin page sends the token as a Bearer header; Google Sheets'
   // IMPORTDATA can only use the ?token= query parameter.
   const bearer = String(req.headers.authorization || "").replace(/^Bearer\s+/i, "");
   const given = Buffer.from((bearer || String(req.query.token || "")).trim());
-  const expected = Buffer.from(ADMIN_TOKEN);
-  if (given.length !== expected.length || !crypto.timingSafeEqual(given, expected)) {
+  const ok = tokens.some((t) => {
+    const expected = Buffer.from(t);
+    return given.length === expected.length && crypto.timingSafeEqual(given, expected);
+  });
+  if (!ok) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
