@@ -80,9 +80,8 @@ module.exports = async function handler(req, res) {
 
   // Any of these env vars can hold the admin password. Trim so a space or
   // newline pasted into the Vercel dashboard doesn't silently break sign-in.
-  const tokens = ["ADMIN_TOKEN", "ANALYTICS_TOKEN", "ANALYTICS"]
-    .map((k) => (process.env[k] || "").trim())
-    .filter(Boolean);
+  const TOKEN_VARS = ["ADMIN_TOKEN", "ANALYTICS_TOKEN", "ANALYTICS"];
+  const tokens = TOKEN_VARS.map((k) => (process.env[k] || "").trim()).filter(Boolean);
   if (!tokens.length) {
     console.error("list-submissions: no ADMIN_TOKEN or ANALYTICS_TOKEN set — add one in Vercel project settings.");
     return res.status(500).json({ error: "Admin access not configured yet" });
@@ -96,7 +95,8 @@ module.exports = async function handler(req, res) {
     return given.length === expected.length && crypto.timingSafeEqual(given, expected);
   });
   if (!ok) {
-    return res.status(401).json({ error: "Unauthorized" });
+    // TEMP diagnostic: names (never values) of the token vars this deploy can see.
+    return res.status(401).json({ error: "Unauthorized", configured: TOKEN_VARS.filter((k) => (process.env[k] || "").trim()) });
   }
 
   if (!resolveRedisCredentials()) {
