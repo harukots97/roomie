@@ -60,7 +60,7 @@ function normalise(e, i) {
 
 async function fetchAll(token) {
   const res = await fetch(API, { headers: { Authorization: 'Bearer ' + token }, cache: 'no-store' });
-  if (res.status === 401) throw Object.assign(new Error('That token is not right.'), { auth: true });
+  if (res.status === 401) throw Object.assign(new Error("That token didn't work. It must match ADMIN_TOKEN in Vercel exactly, and the variable must be enabled for Production."), { auth: true });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || 'Could not load responses (' + res.status + ').');
   return (data.submissions || []).map(normalise);

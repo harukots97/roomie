@@ -77,7 +77,9 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { ADMIN_TOKEN } = process.env;
+  // Trim so a space or newline pasted into the Vercel dashboard doesn't
+  // silently break sign-in.
+  const ADMIN_TOKEN = (process.env.ADMIN_TOKEN || "").trim();
   if (!ADMIN_TOKEN) {
     console.error("list-submissions: ADMIN_TOKEN not set — add it in Vercel project settings.");
     return res.status(500).json({ error: "Admin access not configured yet" });
@@ -85,7 +87,7 @@ module.exports = async function handler(req, res) {
   // The /admin page sends the token as a Bearer header; Google Sheets'
   // IMPORTDATA can only use the ?token= query parameter.
   const bearer = String(req.headers.authorization || "").replace(/^Bearer\s+/i, "");
-  const given = Buffer.from(bearer || String(req.query.token || ""));
+  const given = Buffer.from((bearer || String(req.query.token || "")).trim());
   const expected = Buffer.from(ADMIN_TOKEN);
   if (given.length !== expected.length || !crypto.timingSafeEqual(given, expected)) {
     return res.status(401).json({ error: "Unauthorized" });
